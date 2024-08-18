@@ -104,10 +104,10 @@
 
 /* Search Box */
 .search-box {
-  position: center;
+  position:relative;
   top: 90px;
   right: 0px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
-  width: 300px;
+  width: 80%;
   z-index: 10;
 }
 
