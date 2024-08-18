@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Menu</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tambahkan scroll-behavior ke html untuk smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <header class="site-header">
@@ -17,7 +23,7 @@
       <nav class="main-nav">
           <ul>
               <!-- <li><a href="#">Home</a></li> -->
-              <li><a href="#">Categories</a></li>
+              <li><a href="#categories">Categories</a></li>
 <!--                     <li><a href="#">Blog</a></li>
               <li><a href="#">Contact</a></li> -->
           </ul>
@@ -35,7 +41,7 @@
 <!-- Pembatas Header -->
 
 <body>
-    <div class="menu-categories">
+    <div class="menu-categories" id="categories">
       <div class="category-item">
           <a href="brunch.html">
               <img src="img/categories/brunch.jpg" alt="Brunch">
@@ -56,7 +62,7 @@
       </div>
       <div class="category-item">
           <a href="#">
-              <img src="img//categories/salad.jpg" alt="Salad">
+              <img src="img/categories/salad.jpg" alt="Salad">
               <div class="category-info">
                   <h3>Salad</h3>
                   <p>Evening delights</p>
