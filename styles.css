@@ -363,9 +363,11 @@ body {
   }
 
   body {
-    margin-top: 70px; /* Sesuaikan dengan tinggi header Anda */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f8f8;
 }
-
 
 .menu-categories {
     display: grid;
