@@ -88,6 +88,7 @@
     <script>
         const chart = [];
         const clickCounts = {};
+        const clickTimers = {};
 
         function handleClick(menuName) {
             if (!clickCounts[menuName]) {
@@ -96,12 +97,16 @@
 
             clickCounts[menuName] += 1;
 
-            if (clickCounts[menuName] === 3) {
-                removeFromChart(menuName);
-                clickCounts[menuName] = 0; // Reset count after removing
-            } else {
-                addToChart(menuName);
-            }
+            clearTimeout(clickTimers[menuName]);
+
+            clickTimers[menuName] = setTimeout(() => {
+                if (clickCounts[menuName] === 2) {
+                    addToChart(menuName);
+                } else if (clickCounts[menuName] === 3) {
+                    removeFromChart(menuName);
+                }
+                clickCounts[menuName] = 0; // Reset click count
+            }, 300); // Adjust the delay (in milliseconds) as needed
         }
 
         function addToChart(menuName) {
