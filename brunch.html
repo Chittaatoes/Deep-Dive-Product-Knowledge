@@ -266,7 +266,7 @@
 
 
     <!-- JavaScript -->
-    <script>
+        <script>
         const chart = {};
         const clickCounts = {};
         const clickTimers = {};
@@ -296,6 +296,10 @@
             }
             chart[menuName] += 1;
             displayChart();
+
+            // Scroll ke bagian chart setelah item ditambahkan
+            const chartContainer = document.getElementById('chart-container');
+            chartContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
         function removeFromChart(menuName) {
