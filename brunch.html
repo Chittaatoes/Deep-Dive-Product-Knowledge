@@ -166,7 +166,7 @@
 <div id="chart-container">
     <h2>Chart</h2>
     <ul id="chart-list"></ul>
-    <textarea id="special-request" placeholder="Masukkan permintaan khusus atau komentar di sini..."></textarea>
+    <textarea id="special-request" placeholder="Input special request here..."></textarea>
     <div class="button-container">
         <button class="button button-order" onclick="sendOrder()">Order</button>
         <button class="button button-clear" onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
@@ -305,7 +305,7 @@
             for (let i = 0; i < menuItems.length; i++) {
                 const item = menuItems[i];
                 const title = item.querySelector('.category-info h3').textContent.toLowerCase();
-                const categories = item.getAttribute('data-category').toLowerCase().split(/[ ,]+/);
+                const categories = item.getAttribute('data-category').toLowerCase();
 
                 // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
                 if (title.includes(input) || categories.includes(input)) {
