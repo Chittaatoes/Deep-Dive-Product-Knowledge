@@ -86,7 +86,7 @@
 
     <!-- JavaScript -->
     <script>
-        const chart = [];
+        const chart = {};
         const clickCounts = {};
         const clickTimers = {};
 
@@ -110,14 +110,19 @@
         }
 
         function addToChart(menuName) {
-            chart.push(menuName);
+            if (!chart[menuName]) {
+                chart[menuName] = 0;
+            }
+            chart[menuName] += 1;
             displayChart();
         }
 
         function removeFromChart(menuName) {
-            const index = chart.indexOf(menuName);
-            if (index > -1) {
-                chart.splice(index, 1);
+            if (chart[menuName]) {
+                chart[menuName] -= 1;
+                if (chart[menuName] === 0) {
+                    delete chart[menuName];
+                }
                 displayChart();
                 alert(`${menuName} telah dihapus dari pesanan.`);
             }
@@ -126,15 +131,18 @@
         function displayChart() {
             const chartList = document.getElementById('chart-list');
             chartList.innerHTML = '';
-            chart.forEach(item => {
+            for (const [menuName, quantity] of Object.entries(chart)) {
                 const li = document.createElement('li');
-                li.textContent = item;
+                li.textContent = `${menuName} x${quantity}`;
                 chartList.appendChild(li);
-            });
+            }
         }
 
         async function sendOrder() {
-            const orderMessage = `Order Anda: ${chart.join(', ')}`;
+            const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
+                return quantity > 1 ? `${menuName} x${quantity}` : menuName;
+            });
+            const orderMessage = `Order Anda: ${orderItems.join(', ')}`;
             
             // Copy the order message to the clipboard
             try {
@@ -150,8 +158,11 @@
         }
 
         window.addEventListener('beforeunload', function (e) {
-            if (chart.length > 0) {
-                const orderMessage = `Order Anda sebelum meninggalkan halaman ini: ${chart.join(', ')}`;
+            if (Object.keys(chart).length > 0) {
+                const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
+                    return quantity > 1 ? `${menuName} x${quantity}` : menuName;
+                });
+                const orderMessage = `Order Anda sebelum meninggalkan halaman ini: ${orderItems.join(', ')}`;
                 
                 // Copy the order message to the clipboard
                 navigator.clipboard.writeText(orderMessage).then(() => {
