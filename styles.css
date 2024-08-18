@@ -106,6 +106,7 @@
 .search-box {
   position: center;
   top: 90px;
+  right: 100px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
   width: 300px;
   z-index: 10;
 }
