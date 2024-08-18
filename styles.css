@@ -6,9 +6,20 @@ body {
 }
 
 /* Header Styling */
+/* Styling untuk Header */
 .site-header {
   background-color: #fff;
+  padding: 10px 20px;
   border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: fixed; /* Memastikan header tetap di atas */
+  top: 0;
+  left: 0;
+  width: 100%; /* Mengatur lebar header menjadi 100% */
+  z-index: 1000; /* Menjaga header berada di atas elemen lain */
 }
 
 .header-container {
@@ -352,11 +363,9 @@ body {
   }
 
   body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f8f8f8;
+    margin-top: 70px; /* Sesuaikan dengan tinggi header Anda */
 }
+
 
 .menu-categories {
     display: grid;
