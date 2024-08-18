@@ -80,10 +80,20 @@
             });
         }
 
-        function sendOrder() {
+        async function sendOrder() {
             const orderMessage = `Order Anda: ${chart.join(', ')}`;
-            alert(orderMessage);
-            // Implementasi tambahan bisa mengirim pesan ke API chat atau platform chat lain
+            
+            // Copy the order message to the clipboard
+            try {
+                await navigator.clipboard.writeText(orderMessage);
+                alert('Order telah disalin ke clipboard. Mengarahkan ke WhatsApp...');
+                
+                // Redirect to WhatsApp with the message
+                const encodedMessage = encodeURIComponent(orderMessage);
+                window.location.href = `https://wa.me/6285172352402?text=${encodedMessage}`;
+            } catch (err) {
+                alert('Gagal menyalin ke clipboard. Silakan coba lagi.');
+            }
         }
     </script>
 </body>
