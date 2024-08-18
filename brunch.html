@@ -54,7 +54,7 @@
 
     <!-- Menu Items -->
     <div class="menu-categories">
-        <div class="category-item" ondblclick="addToChart('Super Healthy Bowl')">
+        <div class="category-item" onclick="handleClick('Super Healthy Bowl')">
             <a href="#" class="no-link">
                 <img src="img/brunch/healthybowls.jpg" alt="healthybowl">
                 <div class="category-info">
@@ -66,7 +66,7 @@
     </div>
     <!-- Add more menu items similar to above structure -->
     <div class="menu-categories">
-        <div class="category-item" ondblclick="addToChart('Truffle Egg In Jar')">
+        <div class="category-item" onclick="handleClick('Truffle Egg In Jar')">
             <a href="#" class="no-link">
                 <img src="img/brunch/truffleegginjar.jpeg" alt="Truffle Egg In Jar">
                 <div class="category-info">
@@ -87,10 +87,35 @@
     <!-- JavaScript -->
     <script>
         const chart = [];
+        const clickCounts = {};
+
+        function handleClick(menuName) {
+            if (!clickCounts[menuName]) {
+                clickCounts[menuName] = 0;
+            }
+
+            clickCounts[menuName] += 1;
+
+            if (clickCounts[menuName] === 3) {
+                removeFromChart(menuName);
+                clickCounts[menuName] = 0; // Reset count after removing
+            } else {
+                addToChart(menuName);
+            }
+        }
 
         function addToChart(menuName) {
             chart.push(menuName);
             displayChart();
+        }
+
+        function removeFromChart(menuName) {
+            const index = chart.indexOf(menuName);
+            if (index > -1) {
+                chart.splice(index, 1);
+                displayChart();
+                alert(`${menuName} telah dihapus dari pesanan.`);
+            }
         }
 
         function displayChart() {
