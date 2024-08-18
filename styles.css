@@ -454,16 +454,17 @@ body {
   background-color: #0056b3;
 }
 
-/* Styling untuk textarea */
+/* CSS tambahan untuk textarea */
 #special-request {
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  width: 100%; /* Sesuaikan dengan lebar kontainer */
+  max-width: 600px; /* Maksimal lebar textarea */
+  margin: 20px auto; /* Membuat textarea berada di tengah secara horizontal */
+  padding: 10px; /* Ruang di dalam textarea */
+  border: 1px solid #ccc; /* Border untuk textarea */
+  border-radius: 5px; /* Sudut membulat */
+  box-sizing: border-box; /* Memastikan padding dan border tidak menambah ukuran elemen */
 }
+
 
 /* Button container styling */
 .button-container {
