@@ -97,22 +97,17 @@
   transition: transform 0.3s ease;
 }
 
-.header-right .search-icon:hover img {
-  transform: scale(1.1);
+.header-right {
+  margin-left: 20px; /* Sesuaikan margin jika perlu */
 }
 
 /* Search Box */
 .search-box {
-  display: none;
   position: absolute;
-  top: 70px; /* Adjusted position */
-  right: 50px;
+  top: 100px;
+  right: 160px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
   width: 300px;
   z-index: 10;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 5px;
 }
 
 .search-box input {
