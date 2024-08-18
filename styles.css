@@ -368,3 +368,62 @@ body {
   cursor: default;
   text-decoration: none; /* Menghilangkan garis bawah jika ada */
 }
+
+/* Chart Container */
+#chart-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek 3D dengan bayangan */
+  max-width: 400px;
+  margin: 20px auto;
+  transition: transform 0.3s ease;
+}
+
+#chart-container:hover {
+  transform: translateY(-10px); /* Efek mengangkat saat di-hover */
+}
+
+/* Chart List */
+#chart-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#chart-list li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#chart-list li:hover {
+  transform: translateY(-5px); /* Efek mengangkat sedikit saat di-hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan lebih besar saat di-hover */
+}
+
+/* Button Order */
+#chart-container button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#chart-container button:hover {
+  background-color: #218838;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan pada tombol saat di-hover */
+}
