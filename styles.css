@@ -456,7 +456,7 @@ body {
 
 /* CSS tambahan untuk textarea */
 #special-request {
-  width: 100%; /* Sesuaikan dengan lebar kontainer */
+  width: 50%; /* Sesuaikan dengan lebar kontainer */
   max-width: 500px; /* Maksimal lebar textarea */
   margin: 20px auto; /* Membuat textarea berada di tengah secara horizontal */
   padding: 10px; /* Ruang di dalam textarea */
