@@ -361,3 +361,9 @@ body {
 .category-item:hover .category-info {
     opacity: 1;
 }
+
+.no-link {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none; /* Menghilangkan garis bawah jika ada */
+}
