@@ -16,124 +16,22 @@
       </div>
       <nav class="main-nav">
           <ul>
-              <!-- <li><a href="#">Home</a></li> -->
               <li><a href="#">BRUNCH MENU</a></li>
-<!--                     <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact</a></li> -->
           </ul>
       </nav>
       <div class="header-right">
           <a href="#" class="search-icon">
               <img src="img/search-icon.png" alt="Search">
           </a>
-<!--                 <a href="#" class="profile-icon">
-              <img src="img/profile-icon.png" alt="Profile">
-          </a> -->
       </div>
   </div>
 </header>
 <!-- Pembatas Header -->
 
 <body>
-    <!-- Cheese & TOmato Croissant CUp -->
+    <!-- Menu Items -->
     <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/cheeseandtomatocroissantcup.jpg" alt="Cheese">
-                <div class="category-info">
-                    <h3>Cheese & Tomato Croissant Cup</h3>
-                    <p>Croissant cup with basic parmesan cheese & tomato fondue mixed with red onion (Umamy, Creamy & Soury)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!-- Basilico Prawn Croissant Cup -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/basilicoprawncroissantcup.jpg" alt="Basilico">
-                <div class="category-info">
-                    <h3>Basilico Prawn Croissant Cup</h3>
-                    <p>Croissant cup with pesto mayo & Prawn (Soury & Creamy)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!-- Beef Bacon -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/beefbacon.jpg" alt="BeefBacon">
-                <div class="category-info">
-                    <h3>Beef Bacon</h3>
-                    <p>Multi bread yang disajikan dengan beef bacon onion caramelize & egg (Sweet & Savoury)</p>
-                </div>
-            </a>
-        </div>
-    </div>    
-    <!-- Quiche Lorraine -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/quicheloraine.jpg" alt="Quiche">
-                <div class="category-info">
-                    <h3>Quiche Lorraine</h3>
-                    <p>Puff pastry with bacon yang disajikan dengan mix salad (Salty & Savoury)</p>
-                </div>
-            </a>
-        </div>
-    </div> 
-    <!-- Croissant Benedict -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/benedict.jpg" alt="Benedict">
-                <div class="category-info">
-                    <h3>Croissant Benedict</h3>
-                    <p>Croissant toast with beef mortadella. Dengan topping poach egg & hollandaise sauce (Creamy)</p>
-                </div>
-            </a>
-        </div>
-    </div>     
-    <!-- bruschetta -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/bruschetta.jpg" alt="bruschetta">
-                <div class="category-info">
-                    <h3>Avocado bruschetta</h3>
-                    <p>Sourdogh dengan topping mashed avocado & feta cheese (Salty & Soury)</p>
-                </div>
-            </a>
-        </div>
-    </div> 
-    <!-- French Toast -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/frenchtoast.jpg" alt="FrenchToast">
-                <div class="category-info">
-                    <h3>French Toast</h3>
-                    <p>Roti brioche with topping fruit compoted / buah yang dimasak dengan sedikit gula & lemon mix (Sweet & Sour)</p>
-                </div>
-            </a>
-        </div>
-    </div> 
-    <!-- Monsier Spoon Granola -->
-    <div class="menu-categories">
-        <div class="category-item">
-            <a href="#" class="no-link">
-                <img src="img/brunch/granola.jpg" alt="Granola">
-                <div class="category-info">
-                    <h3>Monsier Spoon Granola</h3>
-                    <p>Healthy food yang terdiri dari mix fruit & peanut yg disajikan dengan yogurt (Sweet & Soury)</p>
-                </div>
-            </a>
-        </div>
-    </div> 
-    <!-- Super Healthy Bowl -->
-    <div class="menu-categories">
-        <div class="category-item">
+        <div class="category-item" ondblclick="addToChart('Super Healthy Bowl')">
             <a href="#" class="no-link">
                 <img src="img/brunch/healthybowls.jpg" alt="healthybowl">
                 <div class="category-info">
@@ -143,6 +41,50 @@
             </a>
         </div>
     </div>
-    <!-- Konten lainnya di sini -->
+    <!-- Add more menu items similar to above structure -->
+    <div class="menu-categories">
+        <div class="category-item" ondblclick="addToChart('Truffle Egg In Jar')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/truffleegginjar.jpeg" alt="Truffle Egg In Jar">
+                <div class="category-info">
+                    <h3>Truffle Egg In Jar</h3>
+                    <p>Telur, mash potato, cheese & mushroom yang di sajikan di dalam jar dengan sourdough (Savoury)</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div id="chart-container">
+        <h2>Chart</h2>
+        <ul id="chart-list"></ul>
+        <button onclick="sendOrder()">Order</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const chart = [];
+
+        function addToChart(menuName) {
+            chart.push(menuName);
+            displayChart();
+        }
+
+        function displayChart() {
+            const chartList = document.getElementById('chart-list');
+            chartList.innerHTML = '';
+            chart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                chartList.appendChild(li);
+            });
+        }
+
+        function sendOrder() {
+            const orderMessage = `Order Anda: ${chart.join(', ')}`;
+            alert(orderMessage);
+            // Implementasi tambahan bisa mengirim pesan ke API chat atau platform chat lain
+        }
+    </script>
 </body>
 </html>
