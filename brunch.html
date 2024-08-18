@@ -138,12 +138,13 @@
     </div>
 
 
-    <!-- Chart Section -->
-    <div id="chart-container">
-        <h2>Chart</h2>
-        <ul id="chart-list"></ul>
-        <button onclick="sendOrder()">Order</button>
-    </div>
+<!-- Chart Section -->
+<div id="chart-container">
+    <h2>Chart</h2>
+    <ul id="chart-list"></ul>
+    <button onclick="sendOrder()">Order</button>
+</div>
+
 
     <!-- JavaScript -->
     <script>
@@ -190,14 +191,41 @@
         }
 
         function displayChart() {
-            const chartList = document.getElementById('chart-list');
-            chartList.innerHTML = '';
-            for (const [menuName, quantity] of Object.entries(chart)) {
-                const li = document.createElement('li');
-                li.textContent = `${menuName} x${quantity}`;
-                chartList.appendChild(li);
-            }
+    const chartList = document.getElementById('chart-list');
+    chartList.innerHTML = '';
+    for (const [menuName, quantity] of Object.entries(chart)) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="chart-item">
+                <span class="menu-name">${menuName} x${quantity}</span>
+                <div class="quantity-controls">
+                    <button onclick="increaseQuantity('${menuName}')">+</button> 
+                    <button onclick="decreaseQuantity('${menuName}')">-</button>
+                </div>
+            </div>
+        `;
+        chartList.appendChild(li);
+    }
+}
+
+
+
+function increaseQuantity(menuName) {
+    if (chart[menuName]) {
+        chart[menuName] += 1;
+        displayChart();
+    }
+}
+
+function decreaseQuantity(menuName) {
+    if (chart[menuName]) {
+        chart[menuName] -= 1;
+        if (chart[menuName] === 0) {
+            delete chart[menuName];
         }
+        displayChart();
+    }
+}
 
         async function sendOrder() {
             const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
