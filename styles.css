@@ -311,9 +311,10 @@ body {
 .menu-categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 .category-item {
