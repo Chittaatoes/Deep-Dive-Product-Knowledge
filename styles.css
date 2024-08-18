@@ -1,294 +1,458 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Menu</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Tambahkan sedikit CSS untuk kotak pencarian */
-        .search-box {
-            display: none;
-            position: absolute;
-            top: 100px; /* Turunkan kotak pencarian sekitar 50px dari posisi sebelumnya */
-            right: 50px;
-            width: 300px;
-            z-index: 10;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
 
-        .search-box input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-        }
-    </style>
-</head>
+.site-header {
+    background-color: #aa7628c2;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-<header class="site-header">
-  <div class="header-container">
-      <div class="logo">
-          <a href="index.html">
-              <img src="img/logo.png" alt="Foodbook Logo">
-          </a>
-      </div>
-      <nav class="main-nav">
-          <ul>
-              <li><a href="#">BRUNCH MENU</a></li>
-          </ul>
-      </nav>
-      <div class="header-right">
-          <a href="#" class="search-icon" onclick="toggleSearchBox()">
-              <img src="img/search-icon.png" alt="Search">
-          </a>
-      </div>
-  </div>
-</header>
-<!-- Pembatas Header -->
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-<body>
-    <!-- Kotak Pencarian -->
-    <div class="search-box" id="search-box">
-        <input type="text" id="search-input" placeholder="Cari menu..." onkeyup="searchMenu()">
-    </div>
+.logo img {
+    height: 40px;
+}
 
-    <!-- Menu Items -->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch healthy" onclick="handleClick('Super Healthy Bowl')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/healthybowls.jpg" alt="healthybowl">
-                <div class="category-info">
-                    <h3>Super Healthy Bowl</h3>
-                    <p>Strawberry, banana, Granola, Coconut Flake & Goji Berry yg disajikan dengan dragon & Banana Smoothies (Fresh, Sweet & Soury)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!-- Add more menu items similar to above structure -->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch savoury" onclick="handleClick('Truffle Egg In Jar')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/truffleegginjar.jpeg" alt="Truffle Egg In Jar">
-                <div class="category-info">
-                    <h3>Truffle Egg In Jar</h3>
-                    <p>Telur, mash potato, cheese & mushroom yang di sajikan di dalam jar dengan sourdough (Savoury)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!-- Basilico Prawn Croissant CUp -->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch soury creamy" onclick="handleClick('Basilico Prawn Croissant Cup')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/basilicoprawncroissantcup.jpg" alt="Basilico Prawn Croissant Cup">
-                <div class="category-info">
-                    <h3>Basilico Prawn Croissant Cup</h3>
-                    <p>Croissant cup with pesto mayo & Prawn (Soury & Creamy)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!--Beef Bacon Egg On Toast-->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch sweet savoury" onclick="handleClick('Beef Bacon Egg On Toast')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/beefbacon.jpg" alt="Beef Bacon Egg On Toast">
-                <div class="category-info">
-                    <h3>Beef Bacon Egg On Toast</h3>
-                    <p>Multi bread yang disajikan dengan beef bacon onion caramelize & Egg (Sweet & Savoury)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!--Avocado Bruschetta-->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch salty soury" onclick="handleClick('Avocado Bruschetta')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/bruschetta.jpg" alt="Avocado Bruschetta">
-                <div class="category-info">
-                    <h3>Avocado Bruschetta</h3>
-                    <p>Sourdough with topping mashed avocado & feta cheese (Salty  & Soury)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!--Croissant benedict-->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch creamy" onclick="handleClick('Croissant Benedict')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/benedict.jpg" alt="Croissant Benedict">
-                <div class="category-info">
-                    <h3>Croissant Benedict</h3>
-                    <p>Croissant toast with beef mortadella yang di topping dengan poach egg & hollandaise sauce (Creamy)</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!--Croissant benedict-->
-    <div class="menu-categories">
-        <div class="category-item" data-category="brunch umamy creamy soury" onclick="handleClick('Cheese & Tomato Croissant Cup')">
-            <a href="#" class="no-link">
-                <img src="img/brunch/cheeseandtomatocroissantcup.jpg" alt="Cheese & Tomato Croissant Cup">
-                <div class="category-info">
-                    <h3>Cheese & Tomato Croissant Cup</h3>
-                    <p>Croissant cup with basic parmesan cheese and tomato fondue mixed with red onion inside (Umamy, Creamy, Soury)</p>
-                </div>
-            </a>
-        </div>
-    </div>
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
 
+.main-nav ul li {
+    display: inline;
+}
 
-<!-- Chart Section -->
-<div id="chart-container">
-    <h2>Chart</h2>
-    <ul id="chart-list"></ul>
-    <button onclick="sendOrder()">Order</button>
-</div>
+.main-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
 
+.main-nav ul li a:hover {
+    color: #e6d922;
+}
 
-    <!-- JavaScript -->
-    <script>
-        const chart = {};
-        const clickCounts = {};
-        const clickTimers = {};
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-        function handleClick(menuName) {
-            if (!clickCounts[menuName]) {
-                clickCounts[menuName] = 0;
-            }
+.header-right a {
+    text-decoration: none;
+}
 
-            clickCounts[menuName] += 1;
+.header-right img {
+    height: 24px;
+    transition: transform 0.3s ease;
+}
 
-            clearTimeout(clickTimers[menuName]);
+.header-right a:hover img {
+    transform: scale(1.1);
+}
 
-            clickTimers[menuName] = setTimeout(() => {
-                if (clickCounts[menuName] === 2) {
-                    addToChart(menuName);
-                } else if (clickCounts[menuName] === 3) {
-                    removeFromChart(menuName);
-                }
-                clickCounts[menuName] = 0; // Reset click count
-            }, 300); // Adjust the delay (in milliseconds) as needed
-        }
-
-        function addToChart(menuName) {
-            if (!chart[menuName]) {
-                chart[menuName] = 0;
-            }
-            chart[menuName] += 1;
-            displayChart();
-        }
-
-        function removeFromChart(menuName) {
-            if (chart[menuName]) {
-                chart[menuName] -= 1;
-                if (chart[menuName] === 0) {
-                    delete chart[menuName];
-                }
-                displayChart();
-                alert(`${menuName} telah di kurangi dari pesanan.`);
-            }
-        }
-
-        function displayChart() {
-    const chartList = document.getElementById('chart-list');
-    chartList.innerHTML = '';
-    for (const [menuName, quantity] of Object.entries(chart)) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <div class="chart-item">
-                <span class="menu-name">${menuName} x${quantity}</span>
-                <div class="quantity-controls">
-                    <button onclick="increaseQuantity('${menuName}')">+</button> 
-                    <button onclick="decreaseQuantity('${menuName}')">-</button>
-                </div>
-            </div>
-        `;
-        chartList.appendChild(li);
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .food-menu {
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  
+  .food-menu h2 {
+    color: #666;
+    margin: 30px auto 30px auto;
+  }
+  
+  .menu-item {
+    position: relative;
+    margin: 15px auto 15px auto;
+    text-align: center;
+    width: 280px;
+    height: 280px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .fruits {
+    background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/fruits.jpg");
+  }
+  
+  .pasta {
+    background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/pasta.jpg");
+  }
+  
+  .steak {
+    background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/steak.jpg");
+  }
+  
+  .menu-logo {
+    position: absolute;
+    display: inline-block;
+    width: 16%;
+    top: 14%;
+    left: 42%;
+  }
+  
+  .menu span {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    color: #d9d9d9;
+  }
+  
+  .fruits span {
+    transition: transform 900ms ease-in-out;
+  }
+  
+  .fruits:hover span {
+    transform: scale(1.5, 1.5) translateY(20px);
+  }
+  
+  .fruits:hover .first-frame {
+    opacity: 1;
+  }
+  
+  .first-frame {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    width: 83%;
+    height: 81%;
+    border: 2px solid #f6bbbb;
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .first-frame p {
+    color: #d9d9d9;
+    padding-top: 60%;
+  }
+  
+  .second-frame {
+    position: absolute;
+    top: 51%;
+    left: 9%;
+    border-left: 1px #f6bbbb solid;
+    height: 40%;
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .second-frame p {
+    color: #f6bbbb;
+    font-size: 20px;
+    padding-left: 6%;
+    padding-bottom: 20%;
+  }
+  
+  .pasta:hover .second-frame {
+    opacity: 1;
+  }
+  
+  .pasta span {
+    transition: transform 900ms ease-in-out;
+  }
+  
+  .pasta:hover span {
+    transform: scale(1.5, 1.5) translateX(-12%) translateY(395%);
+  }
+  
+  .pasta:hover {
+    opacity: 0.7;
+  }
+  
+  .steak .decor-line1 {
+    top: 8%;
+    left: 8%;
+  }
+  
+  .steak .decor-line2 {
+    top: 50%;
+    right: 7%;
+  }
+  
+  .steak .decor-line1,
+  .steak .decor-line2 {
+    position: absolute;
+    width: 0.5%;
+    height: 0.5%;
+    z-index: 1;
+    opacity: 0;
+    background-color: #f6bbbb;
+    animation: mydecor 2s ease-in-out 0s infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes mydecor {
+    from {
+      width: 1%;
     }
+    to {
+      width: 85%;
+    }
+  }
+  
+  .steak:hover .decor-line1,
+  .steak:hover .decor-line2 {
+    opacity: 1;
+  }
+  @media /* medium */ (min-width: 451px) {
+    .food-menu {
+      padding-bottom: 50px;
+      text-align: center;
+    }
+    .food-menu h2 {
+      margin: 60px auto 40px auto;
+    }
+    .menu-item {
+      width: 400px;
+      height: 400px;
+      margin: 50px auto 50px auto;
+    }
+    .menu span {
+      left: 36%;
+    }
+    .second-frame p {
+      font-size: 24px;
+      padding-left: 20%;
+    }
+    .pasta:hover span {
+      transform: scale(1.5, 1.5) translateX(-14%) translateY(550%);
+    }
+    .second-frame {
+      left: 8%;
+      border-left: 2px #f6bbbb solid;
+    }
+  }
+  @media /* large */ (min-width: 769px) {
+    .food-menu {
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .food-menu h2 {
+      margin: 80px auto 40px auto;
+    }
+    .menu-wrapper {
+      display: flex;
+      justify-content: space-around;
+    }
+    .menu-item {
+      width: 250px;
+      height: 250px;
+    }
+    .menu span {
+      left: 30%;
+    }
+    .second-frame p {
+      font-size: 16px;
+      padding-left: 17%;
+    }
+    .pasta:hover span {
+      transform: scale(1.5, 1.5) translateX(-4%) translateY(350%);
+    }
+  }
+  @media /* extra-large */ (min-width: 1025px) {
+      .food-menu {
+      padding-bottom: 100px;
+    }
+    .food-menu h2 {
+      margin: 60px auto 40px auto;
+    }
+    .menu-item {
+      width: 300px;
+      height: 300px;
+    }
+    .menu-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .menu span {
+      left: 32%;
+    }
+    .second-frame p {
+      font-size: 17px;
+    }
+    .pasta:hover span {
+      transform: scale(1.5, 1.5) translateX(-12%) translateY(450%);
+    }
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.menu-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+
+.category-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.category-info h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.category-info p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+.category-item:hover img {
+    transform: scale(1.1);
+}
+
+.category-item:hover .category-info {
+    opacity: 1;
+}
+
+.no-link {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none; /* Menghilangkan garis bawah jika ada */
+}
+
+/* Chart Container */
+#chart-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek 3D dengan bayangan */
+  max-width: 400px;
+  margin: 20px auto;
+  transition: transform 0.3s ease;
+}
+
+#chart-container:hover {
+  transform: translateY(-10px); /* Efek mengangkat saat di-hover */
+}
+
+/* Chart List */
+#chart-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#chart-list li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#chart-list li:hover {
+  transform: translateY(-5px); /* Efek mengangkat sedikit saat di-hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan lebih besar saat di-hover */
+}
+
+.chart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.menu-name {
+  flex-grow: 1; /* Memungkinkan nama menu untuk mengambil ruang yang tersedia */
+  font-size: 16px;
+  text-align: left;
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: flex-end; /* Pastikan tombol berada di sebelah kanan */
+  gap: 5px; /* Jarak antara tombol */
+}
+
+.quantity-controls button {
+  padding: 2px 5px; /* Ukuran tombol */
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc; /* Warna border abu-abu */
+  background-color: #f9f9f9; /* Warna latar belakang netral */
+  border-radius: 3px;
 }
 
 
-
-function increaseQuantity(menuName) {
-    if (chart[menuName]) {
-        chart[menuName] += 1;
-        displayChart();
-    }
+/* Button Order */
+#chart-container button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-function decreaseQuantity(menuName) {
-    if (chart[menuName]) {
-        chart[menuName] -= 1;
-        if (chart[menuName] === 0) {
-            delete chart[menuName];
-        }
-        displayChart();
-    }
+#chart-container button:hover {
+  background-color: #218838;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan pada tombol saat di-hover */
 }
-
-        async function sendOrder() {
-            const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
-                return quantity > 1 ? `${menuName} x${quantity}` : menuName;
-            });
-            const orderMessage = `Order Anda: ${orderItems.join(', ')}`;
-            
-            // Copy the order message to the clipboard
-            try {
-                await navigator.clipboard.writeText(orderMessage);
-                alert('Order telah disalin ke clipboard. Mengarahkan ke WhatsApp...');
-                
-                // Redirect to WhatsApp with the message
-                const encodedMessage = encodeURIComponent(orderMessage);
-                window.location.href = `https://wa.me/6285172352402?text=${encodedMessage}`;
-            } catch (err) {
-                alert('Gagal menyalin ke clipboard. Silakan coba lagi.');
-            }
-        }
-
-        window.addEventListener('beforeunload', function (e) {
-            if (Object.keys(chart).length > 0) {
-                const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
-                    return quantity > 1 ? `${menuName} x${quantity}` : menuName;
-                });
-                const orderMessage = `Order Anda sebelum meninggalkan halaman ini: ${orderItems.join(', ')}`;
-                
-                // Copy the order message to the clipboard
-                navigator.clipboard.writeText(orderMessage).then(() => {
-                    alert(orderMessage);
-                }).catch(err => {
-                    alert('Gagal menyalin order ke clipboard.');
-                });
-
-                const confirmationMessage = "Apakah Anda yakin ingin meninggalkan halaman ini?";
-                e.returnValue = confirmationMessage;
-                return confirmationMessage;
-            }
-        });
-
-        function toggleSearchBox() {
-            const searchBox = document.getElementById('search-box');
-            searchBox.style.display = searchBox.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function searchMenu() {
-    const input = document.getElementById('search-input').value.toLowerCase();
-    const menuItems = document.getElementsByClassName('category-item');
-
-    for (let i = 0; i < menuItems.length; i++) {
-        const item = menuItems[i];
-        const title = item.querySelector('.category-info h3').textContent.toLowerCase();
-        const categories = item.getAttribute('data-category').toLowerCase().split(/[ ,]+/);
-
-        // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
-        if (title.includes(input) || categories.includes(input)) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
-        }
-    }
-}
-
-    </script>
-</body>
-</html>
