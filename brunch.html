@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Menu</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tambahkan sedikit CSS untuk kotak pencarian */
+        .search-box {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 300px;
+            z-index: 10;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 
 <header class="site-header">
@@ -20,7 +38,7 @@
           </ul>
       </nav>
       <div class="header-right">
-          <a href="#" class="search-icon">
+          <a href="#" class="search-icon" onclick="toggleSearchBox()">
               <img src="img/search-icon.png" alt="Search">
           </a>
       </div>
@@ -29,6 +47,11 @@
 <!-- Pembatas Header -->
 
 <body>
+    <!-- Kotak Pencarian -->
+    <div class="search-box" id="search-box">
+        <input type="text" id="search-input" placeholder="Cari menu..." onkeyup="searchMenu()">
+    </div>
+
     <!-- Menu Items -->
     <div class="menu-categories">
         <div class="category-item" ondblclick="addToChart('Super Healthy Bowl')">
@@ -93,6 +116,44 @@
                 window.location.href = `https://wa.me/6285172352402?text=${encodedMessage}`;
             } catch (err) {
                 alert('Gagal menyalin ke clipboard. Silakan coba lagi.');
+            }
+        }
+
+        window.addEventListener('beforeunload', function (e) {
+            if (chart.length > 0) {
+                const orderMessage = `Order Anda sebelum meninggalkan halaman ini: ${chart.join(', ')}`;
+                
+                // Copy the order message to the clipboard
+                navigator.clipboard.writeText(orderMessage).then(() => {
+                    alert(orderMessage);
+                }).catch(err => {
+                    alert('Gagal menyalin order ke clipboard.');
+                });
+
+                const confirmationMessage = "Apakah Anda yakin ingin meninggalkan halaman ini?";
+                e.returnValue = confirmationMessage;
+                return confirmationMessage;
+            }
+        });
+
+        function toggleSearchBox() {
+            const searchBox = document.getElementById('search-box');
+            searchBox.style.display = searchBox.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function searchMenu() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const menuItems = document.getElementsByClassName('category-item');
+
+            for (let i = 0; i < menuItems.length; i++) {
+                const item = menuItems[i];
+                const title = item.querySelector('.category-info h3').textContent.toLowerCase();
+
+                if (title.includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
             }
         }
     </script>
