@@ -8,11 +8,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: fixed; /* Memastikan header tetap di atas */
-  top: 0;
-  left: 0;
-  width: 90%; /* Mengatur lebar header menjadi 100% */
-  z-index: 1000; /* Menjaga header berada di atas elemen lain */
+  position: relative; /* Ensure header is relative for positioning search box */
 }
 
 .header-container {
@@ -104,20 +100,25 @@
 
 /* Search Box */
 .search-box {
-  position:relative;
-  top: 90px;
-  right: 0px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
-  width: 80%;
+  display: none;
+  position: absolute;
+  top: 100%; /* Positions it below the header */
+  left: 50%; /* Centers the box horizontally */
+  transform: translateX(-50%); /* Adjusts the centering */
+  width: 300px;
   z-index: 10;
+  background-color: #fff; /* Optional: to ensure it's visible */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px; /* Add some padding */
 }
 
 .search-box input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border: none;
+  border: none; /* Adjust border style */
   border-radius: 5px;
-  box-sizing: border-box;
 }
 
 
