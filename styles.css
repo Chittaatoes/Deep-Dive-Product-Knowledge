@@ -98,14 +98,15 @@
 }
 
 .header-right {
-    margin-left: 20px; /* Sesuaikan margin jika perlu */
+    margin: 50px; /* Sesuaikan margin jika perlu */
 }
+
 
 /* Search Box */
 .search-box {
   position: absolute;
   top: 100px;
-  right: 100px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
+  right: 10px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
   width: 300px;
   z-index: 10;
 }
