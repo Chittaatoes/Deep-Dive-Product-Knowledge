@@ -54,7 +54,7 @@
 
     <!-- Menu Items -->
     <div class="menu-categories">
-        <div class="category-item" data-category="brunch" onclick="handleClick('Super Healthy Bowl')">
+        <div class="category-item" data-category="brunch healthy" onclick="handleClick('Super Healthy Bowl')">
             <a href="#" class="no-link">
                 <img src="img/brunch/healthybowls.jpg" alt="healthybowl">
                 <div class="category-info">
@@ -66,7 +66,7 @@
     </div>
     <!-- Add more menu items similar to above structure -->
     <div class="menu-categories">
-        <div class="category-item" data-category="brunch" onclick="handleClick('Truffle Egg In Jar')">
+        <div class="category-item" data-category="brunch savoury" onclick="handleClick('Truffle Egg In Jar')">
             <a href="#" class="no-link">
                 <img src="img/brunch/truffleegginjar.jpeg" alt="Truffle Egg In Jar">
                 <div class="category-info">
@@ -78,7 +78,7 @@
     </div>
     <!-- Basilico Prawn Croissant CUp -->
     <div class="menu-categories">
-        <div class="category-item" data-category="brunch" onclick="handleClick('Basilico Prawn Croissant Cup')">
+        <div class="category-item" data-category="brunch soury creamy" onclick="handleClick('Basilico Prawn Croissant Cup')">
             <a href="#" class="no-link">
                 <img src="img/brunch/basilicoprawncroissantcup.jpg" alt="Basilico Prawn Croissant Cup">
                 <div class="category-info">
@@ -90,7 +90,7 @@
     </div>
     <!--Beef Bacon Egg On Toast-->
     <div class="menu-categories">
-        <div class="category-item" data-category="brunch" onclick="handleClick('Beef Bacon Egg On Toast')">
+        <div class="category-item" data-category="brunch sweet savoury" onclick="handleClick('Beef Bacon Egg On Toast')">
             <a href="#" class="no-link">
                 <img src="img/brunch/beefbacon.jpg" alt="Beef Bacon Egg On Toast">
                 <div class="category-info">
@@ -100,9 +100,21 @@
             </a>
         </div>
     </div>
+    <!--Avocado Bruschetta-->
+    <div class="menu-categories">
+        <div class="category-item" data-category="brunch salty soury" onclick="handleClick('Avocado Bruschetta')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/bruschetta.jpg" alt="Avocado Bruschetta">
+                <div class="category-info">
+                    <h3>Avocado Bruschetta</h3>
+                    <p>Sourdough with topping mashed avocado & feta cheese (Salty  & Soury)</p>
+                </div>
+            </a>
+        </div>
+    </div>
     <!--Croissant benedict-->
     <div class="menu-categories">
-        <div class="category-item" data-category="brunch" onclick="handleClick('Croissant Benedict')">
+        <div class="category-item" data-category="brunch creamy" onclick="handleClick('Croissant Benedict')">
             <a href="#" class="no-link">
                 <img src="img/brunch/benedict.jpg" alt="Croissant Benedict">
                 <div class="category-info">
@@ -112,6 +124,19 @@
             </a>
         </div>
     </div>
+    <!--Croissant benedict-->
+    <div class="menu-categories">
+        <div class="category-item" data-category="brunch umamy creamy soury" onclick="handleClick('Cheese & Tomato Croissant Cup')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/cheeseandtomatocroissantcup.jpg" alt="Cheese & Tomato Croissant Cup">
+                <div class="category-info">
+                    <h3>Cheese & Tomato Croissant Cup</h3>
+                    <p>Croissant cup with basic parmesan cheese and tomato fondue mixed with red onion inside (Umamy, Creamy, Soury)</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
 
     <!-- Chart Section -->
     <div id="chart-container">
@@ -219,22 +244,23 @@
         }
 
         function searchMenu() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const menuItems = document.getElementsByClassName('category-item');
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const menuItems = document.getElementsByClassName('category-item');
 
-            for (let i = 0; i < menuItems.length; i++) {
-                const item = menuItems[i];
-                const title = item.querySelector('.category-info h3').textContent.toLowerCase();
-                const category = item.getAttribute('data-category').toLowerCase();
+    for (let i = 0; i < menuItems.length; i++) {
+        const item = menuItems[i];
+        const title = item.querySelector('.category-info h3').textContent.toLowerCase();
+        const categories = item.getAttribute('data-category').toLowerCase().split(/[ ,]+/);
 
-                // Tampilkan item jika pencarian sesuai dengan judul atau kategori
-                if (title.includes(input) || category.includes(input)) {
-                item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            }
+        // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
+        if (title.includes(input) || categories.includes(input)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
         }
+    }
+}
+
     </script>
 </body>
 </html>
