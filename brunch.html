@@ -166,10 +166,12 @@
 <div id="chart-container">
     <h2>Chart</h2>
     <ul id="chart-list"></ul>
-    <button onclick="sendOrder()">Order</button>
-    <button onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
+    <textarea id="special-request" placeholder="Masukkan permintaan khusus atau komentar di sini..."></textarea>
+    <div class="button-container">
+        <button class="button button-order" onclick="sendOrder()">Order</button>
+        <button class="button button-clear" onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
+    </div>
 </div>
-
 
 
     <!-- JavaScript -->
@@ -217,48 +219,47 @@
         }
 
         function displayChart() {
-    const chartList = document.getElementById('chart-list');
-    chartList.innerHTML = '';
-    for (const [menuName, quantity] of Object.entries(chart)) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <div class="chart-item">
-                <span class="menu-name">${menuName} x${quantity}</span>
-                <div class="quantity-controls">
-                    <button onclick="increaseQuantity('${menuName}')">+</button> 
-                    <button onclick="decreaseQuantity('${menuName}')">-</button>
-                </div>
-            </div>
-        `;
-        chartList.appendChild(li);
-    }
-}
-
-
-
-function increaseQuantity(menuName) {
-    if (chart[menuName]) {
-        chart[menuName] += 1;
-        displayChart();
-    }
-}
-
-function decreaseQuantity(menuName) {
-    if (chart[menuName]) {
-        chart[menuName] -= 1;
-        if (chart[menuName] === 0) {
-            delete chart[menuName];
+            const chartList = document.getElementById('chart-list');
+            chartList.innerHTML = '';
+            for (const [menuName, quantity] of Object.entries(chart)) {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div class="chart-item">
+                        <span class="menu-name">${menuName} x${quantity}</span>
+                        <div class="quantity-controls">
+                            <button onclick="increaseQuantity('${menuName}')">+</button> 
+                            <button onclick="decreaseQuantity('${menuName}')">-</button>
+                        </div>
+                    </div>
+                `;
+                chartList.appendChild(li);
+            }
         }
-        displayChart();
-    }
-}
+
+        function increaseQuantity(menuName) {
+            if (chart[menuName]) {
+                chart[menuName] += 1;
+                displayChart();
+            }
+        }
+
+        function decreaseQuantity(menuName) {
+            if (chart[menuName]) {
+                chart[menuName] -= 1;
+                if (chart[menuName] === 0) {
+                    delete chart[menuName];
+                }
+                displayChart();
+            }
+        }
 
         async function sendOrder() {
             const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
                 return quantity > 1 ? `${menuName} x${quantity}` : menuName;
             });
-            const orderMessage = `Order Anda: ${orderItems.join(', ')}`;
-            
+            const specialRequest = document.getElementById('special-request').value.trim();
+            const orderMessage = `Order Anda: ${orderItems.join(', ')}${specialRequest ? ' - Permintaan Khusus: ' + specialRequest : ''}`;
+
             // Copy the order message to the clipboard
             try {
                 await navigator.clipboard.writeText(orderMessage);
@@ -298,32 +299,32 @@ function decreaseQuantity(menuName) {
         }
 
         function searchMenu() {
-    const input = document.getElementById('search-input').value.toLowerCase();
-    const menuItems = document.getElementsByClassName('category-item');
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const menuItems = document.getElementsByClassName('category-item');
 
-    for (let i = 0; i < menuItems.length; i++) {
-        const item = menuItems[i];
-        const title = item.querySelector('.category-info h3').textContent.toLowerCase();
-        const categories = item.getAttribute('data-category').toLowerCase().split(/[ ,]+/);
+            for (let i = 0; i < menuItems.length; i++) {
+                const item = menuItems[i];
+                const title = item.querySelector('.category-info h3').textContent.toLowerCase();
+                const categories = item.getAttribute('data-category').toLowerCase().split(/[ ,]+/);
 
-        // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
-        if (title.includes(input) || categories.includes(input)) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
+                // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
+                if (title.includes(input) || categories.includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
         }
-    }
-}
 
-function clearChart() {
-    const confirmation = confirm('Apakah Anda yakin ingin menghapus semua item dari chart?');
-    if (confirmation) {
-        for (const menuName in chart) {
-            delete chart[menuName];
+        function clearChart() {
+            const confirmation = confirm('Apakah kamu yakin ingin menghapus semua menu dari chart?');
+            if (confirmation) {
+                for (const menuName in chart) {
+                    delete chart[menuName];
+                }
+                displayChart();
+            }
         }
-        displayChart();
-    }
-}
     </script>
 </body>
 </html>
