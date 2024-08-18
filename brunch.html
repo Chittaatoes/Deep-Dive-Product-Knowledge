@@ -6,11 +6,11 @@
     <title>Food Menu</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Tambahkan sedikit CSS untuk kotak pencarian */
-        .search-box {
+/* Tambahkan sedikit CSS untuk kotak pencarian */
+.search-box {
             display: none;
             position: absolute;
-            top: 100px; /* Turunkan kotak pencarian sekitar 50px dari posisi sebelumnya */
+            top: 100px;
             right: 50px;
             width: 300px;
             z-index: 10;
@@ -24,25 +24,65 @@
         }
 
         /* Styling untuk tombol */
-.button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px; /* Gap antara tombol */
-}
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Gap antara tombol */
+        }
 
-.button-order {
-    background-color: #4CAF50; /* Warna latar belakang tombol Order (Hijau) */
-    color: white;
-}
+        .button-order {
+            background-color: #4CAF50; /* Warna latar belakang tombol Order (Hijau) */
+            color: white;
+        }
 
-.button-clear {
-    background-color: #f44336; /* Warna latar belakang tombol Clear (Merah) */
-    color: white;
-}
+        .button-clear {
+            background-color: #f44336; /* Warna latar belakang tombol Clear (Merah) */
+            color: white;
+        }
 
+        /* Styling untuk Header */
+        .site-header {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin: 0 15px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .header-right a {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right img {
+            height: 24px;
+        }
 
         /* Styling untuk Chart Container */
         #chart-container {
@@ -102,32 +142,22 @@
 </head>
 
 <header class="site-header">
-    <div class="header-container">
-      <div class="logo">
+    <div class="logo">
         <a href="index.html">
-          <img src="img/logo.png" alt="Foodbook Logo">
+            <img src="img/logo.png" alt="Foodbook Logo">
         </a>
-      </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#">BRUNCH MENU</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn">More</a>
-            <div class="dropdown-content">
-              <a href="#">Desserts</a>
-              <a href="#">Drinks</a>
-              <a href="#">Specials</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-      <div class="header-right">
-        <a href="#" class="search-icon" onclick="toggleSearchBox()">
-          <img src="img/search-icon.png" alt="Search">
-        </a>
-      </div>
     </div>
-  </header>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#">BRUNCH MENU</a></li>
+        </ul>
+    </nav>
+    <div class="header-right">
+        <a href="#" class="search-icon" onclick="toggleSearchBox()">
+            <img src="img/search-icon.png" alt="Search">
+        </a>
+    </div>
+</header>
 <!-- Pembatas Header -->
 
 <body>
