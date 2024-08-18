@@ -143,7 +143,9 @@
     <h2>Chart</h2>
     <ul id="chart-list"></ul>
     <button onclick="sendOrder()">Order</button>
+    <button onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
 </div>
+
 
 
     <!-- JavaScript -->
@@ -289,6 +291,15 @@ function decreaseQuantity(menuName) {
     }
 }
 
+function clearChart() {
+    const confirmation = confirm('Apakah Anda yakin ingin menghapus semua item dari chart?');
+    if (confirmation) {
+        for (const menuName in chart) {
+            delete chart[menuName];
+        }
+        displayChart();
+    }
+}
     </script>
 </body>
 </html>
