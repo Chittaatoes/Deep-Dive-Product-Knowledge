@@ -104,7 +104,7 @@
 
 /* Search Box */
 .search-box {
-  position: absolute;
+  position: fixed;
   top: 100px;
   right: 10px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
   width: 300px;
