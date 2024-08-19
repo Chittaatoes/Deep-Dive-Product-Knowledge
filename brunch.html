@@ -238,7 +238,7 @@
             </a>
         </div>
     </div>
-    <!--Croissant benedict-->
+    <!--Cheese & Tomato Croissant Cup-->
     <div class="menu-categories">
         <div class="category-item" data-category="brunch umamy creamy soury" onclick="handleClick('Cheese & Tomato Croissant Cup')">
             <a href="#" class="no-link">
@@ -250,7 +250,92 @@
             </a>
         </div>
     </div>
+    <!--French Toast-->
+    <div class="menu-categories">
+        <div class="category-item" data-category="brunch sweet soury" onclick="handleClick('French Toast')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/frenchtoast.jpg" alt="French Toast">
+                <div class="category-info">
+                    <h3>French Toast</h3>
+                    <p>Roti brioche dengan topping fruit compoted & lemon mix (Sweet & Sour)</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--Smoked Salmon Egg on Toast-->
+<!--     <div class="menu-categories">
+        <div class="category-item" data-category="brunch" onclick="handleClick('Smoked Salmon Egg on Toast')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/smokedsalmonandeggontoast.jpg" alt="Smoked Salmon Egg on Toast">
+                <div class="category-info">
+                    <h3>Smoked Salmon & Egg on Toast</h3>
+                    <p>Roti()</p>
+                </div>
+            </a>
+        </div>
+    </div> -->
+    <!--Quiche Lorraine-->
+    <div class="menu-categories">
+        <div class="category-item" data-category="brunch salty savoury" onclick="handleClick('Quiche Lorraine')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/quicheloraine.jpg" alt="Quiche Lorraine">
+                <div class="category-info">
+                    <h3>Quiche Lorraine</h3>
+                    <p>Puff pastry dengan isi bacon yang disajikan dengan mix salad (Salty & Savoury)</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--Quiche Lorraine-->
+    <div class="menu-categories">
+        <div class="category-item" data-category="brunch healthy fresh sweet soury" onclick="handleClick('Quiche Lorraine')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/granola.jpg" alt="Quiche Lorraine">
+                <div class="category-info">
+                    <h3>Monsier Spoon Granola</h3>
+                    <p>Healthy food with mix fruit & peanut yang disajikan dengan yogurth (Sweet & SOury)</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--Quiche Lorraine-->
+    <div class="menu-categories">
+        <div class="category-item" data-category="brunch healthy fresh sweet soury" onclick="handleClick('Quiche Lorraine')">
+            <a href="#" class="no-link">
+                <img src="img/brunch/" alt="Quiche Lorraine">
+                <div class="category-info">
+                    <h3>Monsier Spoon Granola</h3>
+                    <p>Healthy food with mix fruit & peanut yang disajikan dengan yogurth (Sweet & SOury)</p>
+                </div>
+            </a>
+        </div>
+    </div>
 
+
+    <!-- Wagyu Signature -->
+    <div class="menu-categories">
+        <div class="category-item" data-category="croger burger" onclick="handleClick('Wagyu Signature')">
+            <a href="#" class="no-link">
+                <img src="img/sandwich/wagyusignature.jpg" alt="Wagyu Signature">
+                <div class="category-info">
+                    <h3>Wagyu Signature</h3>
+                    <p>Wagyu beef patty, French scrambled eggs, onion, lettuce, cheddar cheese & BBQ sauce on house-made croger bun ()</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Buttermilk Chicken -->
+    <div class="menu-categories">
+        <div class="category-item" data-category="croger burger" onclick="handleClick('Buttermilk Chichken')">
+            <a href="#" class="no-link">
+                <img src="img/sandwich/buttermilkchicken.jpg" alt="Buttermilk Chicken">
+                <div class="category-info">
+                    <h3>Buttermilk Chicken</h3>
+                    <p>Crispy buttermilk chicken with mozza cheese, caramelized onion, lettuce and aioli on house-made croger bun ()</p>
+                </div>
+            </a>
+        </div>
+    </div>
 
 <!-- Chart Section -->
 <div id="chart-container">
@@ -353,7 +438,7 @@
                 return quantity > 1 ? `${menuName} x${quantity}` : menuName;
             });
             const specialRequest = document.getElementById('special-request').value.trim();
-            const orderMessage = `Order Anda: ${orderItems.join(', ')}${specialRequest ? ' - Permintaan Khusus: ' + specialRequest : ''}`;
+            const orderMessage = `Your Order: ${orderItems.join(', ')}${specialRequest ? ' - Special Request / addons: ' + specialRequest : ''}`;
 
             // Copy the order message to the clipboard
             try {
