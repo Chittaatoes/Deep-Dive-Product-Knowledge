@@ -521,15 +521,27 @@
 }
 
 /* CSS tambahan untuk textarea */
+
 #special-request {
-  width: 100%; /* Sesuaikan dengan lebar kontainer */
-  max-width: 500px; /* Maksimal lebar textarea */
-  margin: 20px auto; /* Membuat textarea berada di tengah secara horizontal */
-  padding: 10px; /* Ruang di dalam textarea */
-  border: 1px solid #ccc; /* Border untuk textarea */
-  border-radius: 5px; /* Sudut membulat */
-  box-sizing: border-box; /* Memastikan padding dan border tidak menambah ukuran elemen */
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: visible; /* Memastikan tidak ada scroll */
+  resize: none; /* Mencegah pengguna untuk mengubah ukuran secara manual */
+  min-height: 50px; /* Tinggi minimal dari textarea */
+  height: auto; /* Mengatur tinggi otomatis sesuai dengan isi */
 }
+
+#special-request:focus {
+  height: auto;
+  min-height: 100px; /* Tinggi minimum textarea saat fokus */
+  max-height: none; /* Membiarkan textarea untuk terus bertambah tinggi */
+}
+
 
 
 /* Button container styling */
