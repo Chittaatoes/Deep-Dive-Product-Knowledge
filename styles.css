@@ -106,7 +106,7 @@
 .search-box {
   position: center;
   top: 90px;
-  right: 0px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
+  right: 50px; /* Ubah nilai ini untuk menggeser kotak pencarian ke kiri atau kanan */
   width: 300px;
   z-index: 10;
 }
@@ -118,7 +118,6 @@
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
-  padding-left: 50px;
 }
 
 .menu-category-header-awal {
