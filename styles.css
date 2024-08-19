@@ -121,6 +121,20 @@
 }
 
 
+.menu-category-header {
+  margin: 40px 0 20px;
+  text-align: center;
+}
+
+.menu-category-header h2 {
+  font-size: 24px;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+
 * {
     margin: 0;
     padding: 0;
