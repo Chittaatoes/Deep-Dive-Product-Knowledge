@@ -102,22 +102,26 @@
 }
 
 
-/* Search Box */
+/* Tambahkan CSS untuk kontainer kotak pencarian */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0; /* Atur jarak atas dan bawah sesuai kebutuhan */
+}
+
 .search-box {
-  position: center;
-  top: 90px;
+  display: none;
+  position: relative;
   width: 300px;
-  z-index: 10;
 }
 
 .search-box input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
 }
+
 
 .menu-category-header-awal {
   padding-top: 15px;
