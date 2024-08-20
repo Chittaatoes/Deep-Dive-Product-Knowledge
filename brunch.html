@@ -911,6 +911,30 @@
         </a>
     </div>
 </div>
+<!--Steak Frites-->
+<div class="menu-categories">
+    <div class="category-item" data-category="mains entree beef rich mix salad gurih salty" onclick="handleClick('Steak Frites')">
+        <a href="#" class="no-link">
+            <img src="img/mains/steakfrites.jpeg" alt="Steak Frites">
+            <div class="category-info">
+                <h3>Steak Frites |  200gr striploin, 230</h3>
+                <p>Grilled striploin, crispy hand cut-fries, and mix salad, served with 'Cafe de Paris' sauce ( rasa yang gurih, sedikit asam).</p>
+            </div>
+        </a>
+    </div>
+</div>
+<!--Steak Frites-->
+<div class="menu-categories">
+    <div class="category-item" data-category="mains entree beef rich juicy" onclick="handleClick('Beef Tongue')">
+        <a href="#" class="no-link">
+            <img src="img/mains/beeftongue.jpg" alt="Beef Tongue">
+            <div class="category-info">
+                <h3>Beef Tongue | 160</h3>
+                <p>Beef tongue served with grated potato pancake and house-made special sauce.</p>
+            </div>
+        </a>
+    </div>
+</div>
 
 <!-- Chart Section -->
 <div id="chart-container">
@@ -928,10 +952,17 @@
     <!-- JavaScript -->
         <script>
         const chart = {};
-        const clickCounts = {};
-        const clickTimers = {};
+const clickCounts = {};
+const clickTimers = {};
+const menusWithDoneness = [
+    'Black Angus Striploin O’Connor Beef 300gr',
+    'Wagyu Beef Bourguignon',
+    'Australian Rib-eye Steak',
+    'Steak Frites',
+    'Beef Tongue'
+];
 
-        function handleClick(menuName) {
+function handleClick(menuName) {
     const now = new Date();
     const hour = now.getHours();
     
@@ -981,137 +1012,166 @@
     }
 }
 
+function addToChart(menuName) {
+    if (!chart[menuName]) {
+        chart[menuName] = 0;
+    }
+    chart[menuName] += 1;
+    displayChart();
 
-        function addToChart(menuName) {
-            if (!chart[menuName]) {
-                chart[menuName] = 0;
-            }
+    // Memeriksa jika menu memerlukan tingkat kematangan
+    if (menusWithDoneness.includes(menuName)) {
+        const doneness = prompt('Input tingkat kematangan: rare, medium rare, medium, medium well, or well done.');
+        if (doneness) {
+            chart[menuName] = { quantity: chart[menuName], doneness: doneness };
+        }
+    }
+
+    // Scroll ke bagian chart setelah item ditambahkan
+    const chartContainer = document.getElementById('chart-container');
+    chartContainer.scrollIntoView({ behavior: 'smooth' });
+}
+
+function removeFromChart(menuName) {
+    if (chart[menuName]) {
+        chart[menuName] = chart[menuName] - 1;
+        if (chart[menuName] === 0) {
+            delete chart[menuName];
+        }
+        displayChart();
+        alert(`${menuName} telah di kurangi dari pesanan.`);
+    }
+}
+
+function displayChart() {
+    const chartList = document.getElementById('chart-list');
+    chartList.innerHTML = '';
+    for (const [menuName, value] of Object.entries(chart)) {
+        let quantity = value;
+        let doneness = '';
+        if (typeof value === 'object') {
+            quantity = value.quantity;
+            doneness = value.doneness ? ` (${value.doneness})` : '';
+        }
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="chart-item">
+                <span class="menu-name">${menuName}${doneness} x${quantity}</span>
+                <div class="quantity-controls">
+                    <button onclick="increaseQuantity('${menuName}')">+</button> 
+                    <button onclick="decreaseQuantity('${menuName}')">-</button>
+                </div>
+            </div>
+        `;
+        chartList.appendChild(li);
+    }
+}
+
+function increaseQuantity(menuName) {
+    if (chart[menuName]) {
+        if (typeof chart[menuName] === 'object') {
+            chart[menuName].quantity += 1;
+        } else {
             chart[menuName] += 1;
-            displayChart();
-
-            // Scroll ke bagian chart setelah item ditambahkan
-            const chartContainer = document.getElementById('chart-container');
-            chartContainer.scrollIntoView({ behavior: 'smooth' });
         }
+        displayChart();
+    }
+}
 
-        function removeFromChart(menuName) {
-            if (chart[menuName]) {
-                chart[menuName] -= 1;
-                if (chart[menuName] === 0) {
-                    delete chart[menuName];
-                }
-                displayChart();
-                alert(`${menuName} telah di kurangi dari pesanan.`);
+function decreaseQuantity(menuName) {
+    if (chart[menuName]) {
+        if (typeof chart[menuName] === 'object') {
+            chart[menuName].quantity -= 1;
+            if (chart[menuName].quantity === 0) {
+                delete chart[menuName];
+            }
+        } else {
+            chart[menuName] -= 1;
+            if (chart[menuName] === 0) {
+                delete chart[menuName];
             }
         }
+        displayChart();
+    }
+}
 
-        function displayChart() {
-            const chartList = document.getElementById('chart-list');
-            chartList.innerHTML = '';
-            for (const [menuName, quantity] of Object.entries(chart)) {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <div class="chart-item">
-                        <span class="menu-name">${menuName} x${quantity}</span>
-                        <div class="quantity-controls">
-                            <button onclick="increaseQuantity('${menuName}')">+</button> 
-                            <button onclick="decreaseQuantity('${menuName}')">-</button>
-                        </div>
-                    </div>
-                `;
-                chartList.appendChild(li);
-            }
-        }
+async function sendOrder() {
+    const orderItems = Object.entries(chart).map(([menuName, value]) => {
+        const quantity = typeof value === 'object' ? value.quantity : value;
+        const doneness = typeof value === 'object' ? ` (${value.doneness})` : '';
+        return quantity > 1 ? `${menuName}${doneness} x${quantity}` : `${menuName}${doneness}`;
+    });
+    const specialRequest = document.getElementById('special-request').value.trim();
+    const orderMessage = `Your Order: ${orderItems.join(', ')}${specialRequest ? ' - Special Request / addons: ' + specialRequest : ''}`;
 
-        function increaseQuantity(menuName) {
-            if (chart[menuName]) {
-                chart[menuName] += 1;
-                displayChart();
-            }
-        }
+    // Copy the order message to the clipboard
+    try {
+        await navigator.clipboard.writeText(orderMessage);
+        alert('Order telah disalin ke clipboard. Mengarahkan ke WhatsApp...');
+        
+        // Redirect to WhatsApp with the message
+        const encodedMessage = encodeURIComponent(orderMessage);
+        window.location.href = `https://wa.me/6285172352402?text=${encodedMessage}`;
+    } catch (err) {
+        alert('Gagal menyalin ke clipboard. Silakan coba lagi.');
+    }
+}
 
-        function decreaseQuantity(menuName) {
-            if (chart[menuName]) {
-                chart[menuName] -= 1;
-                if (chart[menuName] === 0) {
-                    delete chart[menuName];
-                }
-                displayChart();
-            }
-        }
-
-        async function sendOrder() {
-            const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
-                return quantity > 1 ? `${menuName} x${quantity}` : menuName;
-            });
-            const specialRequest = document.getElementById('special-request').value.trim();
-            const orderMessage = `Your Order: ${orderItems.join(', ')}${specialRequest ? ' - Special Request / addons: ' + specialRequest : ''}`;
-
-            // Copy the order message to the clipboard
-            try {
-                await navigator.clipboard.writeText(orderMessage);
-                alert('Order telah disalin ke clipboard. Mengarahkan ke WhatsApp...');
-                
-                // Redirect to WhatsApp with the message
-                const encodedMessage = encodeURIComponent(orderMessage);
-                window.location.href = `https://wa.me/6285172352402?text=${encodedMessage}`;
-            } catch (err) {
-                alert('Gagal menyalin ke clipboard. Silakan coba lagi.');
-            }
-        }
-
-        window.addEventListener('beforeunload', function (e) {
-            if (Object.keys(chart).length > 0) {
-                const orderItems = Object.entries(chart).map(([menuName, quantity]) => {
-                    return quantity > 1 ? `${menuName} x${quantity}` : menuName;
-                });
-                const orderMessage = `Order Anda sebelum meninggalkan halaman ini: ${orderItems.join(', ')}`;
-                
-                // Copy the order message to the clipboard
-                navigator.clipboard.writeText(orderMessage).then(() => {
-                    alert(orderMessage);
-                }).catch(err => {
-                    alert('Gagal menyalin order ke clipboard.');
-                });
-
-                const confirmationMessage = "Apakah Anda yakin ingin meninggalkan halaman ini?";
-                e.returnValue = confirmationMessage;
-                return confirmationMessage;
-            }
+window.addEventListener('beforeunload', function (e) {
+    if (Object.keys(chart).length > 0) {
+        const orderItems = Object.entries(chart).map(([menuName, value]) => {
+            const quantity = typeof value === 'object' ? value.quantity : value;
+            const doneness = typeof value === 'object' ? ` (${value.doneness})` : '';
+            return quantity > 1 ? `${menuName}${doneness} x${quantity}` : `${menuName}${doneness}`;
+        });
+        const orderMessage = `Order Anda sebelum meninggalkan halaman ini: ${orderItems.join(', ')}`;
+        
+        // Copy the order message to the clipboard
+        navigator.clipboard.writeText(orderMessage).then(() => {
+            alert(orderMessage);
+        }).catch(err => {
+            alert('Gagal menyalin order ke clipboard.');
         });
 
-        function toggleSearchBox() {
-            const searchBox = document.getElementById('search-box');
-            searchBox.style.display = searchBox.style.display === 'block' ? 'none' : 'block';
+        const confirmationMessage = "Apakah Anda yakin ingin meninggalkan halaman ini?";
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+    }
+});
+
+function toggleSearchBox() {
+    const searchBox = document.getElementById('search-box');
+    searchBox.style.display = searchBox.style.display === 'block' ? 'none' : 'block';
+}
+
+function searchMenu() {
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const menuItems = document.getElementsByClassName('category-item');
+
+    for (let i = 0; i < menuItems.length; i++) {
+        const item = menuItems[i];
+        const title = item.querySelector('.category-info h3').textContent.toLowerCase();
+        const categories = item.getAttribute('data-category').toLowerCase();
+
+        // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
+        if (title.includes(input) || categories.includes(input)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
         }
+    }
+}
 
-        function searchMenu() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const menuItems = document.getElementsByClassName('category-item');
-
-            for (let i = 0; i < menuItems.length; i++) {
-                const item = menuItems[i];
-                const title = item.querySelector('.category-info h3').textContent.toLowerCase();
-                const categories = item.getAttribute('data-category').toLowerCase();
-
-                // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
-                if (title.includes(input) || categories.includes(input)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            }
+function clearChart() {
+    const confirmation = confirm('Apakah kamu yakin ingin menghapus semua menu dari chart?');
+    if (confirmation) {
+        for (const menuName in chart) {
+            delete chart[menuName];
         }
+        displayChart();
+    }
+}
 
-        function clearChart() {
-            const confirmation = confirm('Apakah kamu yakin ingin menghapus semua menu dari chart?');
-            if (confirmation) {
-                for (const menuName in chart) {
-                    delete chart[menuName];
-                }
-                displayChart();
-            }
-        }
     </script>
 </body>
 </html>
