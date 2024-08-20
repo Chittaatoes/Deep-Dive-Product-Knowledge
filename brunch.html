@@ -170,6 +170,70 @@
 
     <!-- Pembatas Kategori Brunch Menu -->
     <div class="menu-category-header-awal"></div>
+
+    <!-- Contoh Menu yang hanya sebagai tampilan -->
+<div class="menu-category-header">
+    <h2>BREAKFAST PACKAGE</h2>
+</div>
+
+<!-- Item yang hanya untuk tampilan -->
+<div class="menu-categories">
+    <div class="category-item" data-category="display">
+        <a href="#" class="no-link">
+            <img src="img/breakfast/breakfast.jpg" alt="Display Item 1">
+            <div class="category-info">
+                <h3>Beakfast Package</h3>
+                <p>1 Menu + 1 Beverage (Hot Black tea / hot long black).</p>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- <div class="menu-categories">
+    <div class="category-item" data-category="display">
+        <a href="#" class="no-link">
+            <img src="img/display/display2.jpg" alt="Display Item 2">
+            <div class="category-info">
+                <h3>Display Item 2</h3>
+                <p>Deskripsi untuk item lainnya yang hanya untuk tampilan.</p>
+            </div>
+        </a>
+    </div>
+</div> -->
+
+        <!-- Add more menu items similar to above structure -->
+        <div class="menu-categories">
+            <div class="category-item" data-category="breakfast" onclick="handleClick('The OG Scrambled Egg')">
+                <a href="#" class="no-link">
+                    <img src="img/breakfast/ogscrambledegg.jpg" alt="The OG Scrambled Egg">
+                    <div class="category-info">
+                        <h3>The OG Scrambled Egg</h3>
+                        <p>Scrambled egg with truffle oil, mushroom, beef bacon & roti sourdough</p>
+                    </div>
+                </a>
+            </div>
+        </div> 
+        <div class="menu-categories">
+            <div class="category-item" data-category="breakfast bacon" onclick="handleClick('Breakfast Burger')">
+                <a href="#" class="no-link">
+                    <img src="img/breakfast/breakfastburger.jpg" alt="Breakfast Burger">
+                    <div class="category-info">
+                        <h3>Breakfast Burger</h3>
+                        <p>Scrambled egg with truffle oil, mushroom, beef bacon & roti sourdough</p>
+                    </div>
+                </a>
+            </div>
+        </div> 
+        <div class="menu-categories">
+            <div class="category-item" data-category="breakfast chicken" onclick="handleClick('Chicken Quesadilla')">
+                <a href="#" class="no-link">
+                    <img src="img/breakfast/chickenqassadila.jpg" alt="Chicken Quesadilla">
+                    <div class="category-info">
+                        <h3>Chicken Quesadilla</h3>
+                        <p>Roti tortila with rosmery chicken and cheese</p>
+                    </div>
+                </a>
+            </div>
+        </div>
     
 <div class="menu-category-header">
     <h2>BRUNCH MENU</h2>
@@ -317,7 +381,7 @@
     </div>
     <!-- Buttermilk Chicken -->
     <div class="menu-categories">
-        <div class="category-item" data-category="croger burger tasty creamy crispy" onclick="handleClick('Buttermilk Chichken')">
+        <div class="category-item" data-category="croger burger tasty creamy crispy" onclick="handleClick('Buttermilk Chicken')">
             <a href="#" class="no-link">
                 <img src="img/sandwich/buttermilkchicken.jpg" alt="Buttermilk Chicken">
                 <div class="category-info">
@@ -744,6 +808,15 @@
         const clickTimers = {};
 
         function handleClick(menuName) {
+    const now = new Date();
+    const hour = now.getHours();
+    
+    // Daftar menu yang memerlukan cek waktu
+    const timeSensitiveMenus = ['The OG Scrambled Egg', 'Breakfast Burger', 'Chicken Quesadilla'];
+    
+    if (timeSensitiveMenus.includes(menuName)) {
+        if (hour >= 8 && hour < 10) {
+            // Jika waktu berada dalam rentang 08:00 - 10:00, lanjutkan dengan logika klik ganda
             if (!clickCounts[menuName]) {
                 clickCounts[menuName] = 0;
             }
@@ -759,8 +832,31 @@
                     removeFromChart(menuName);
                 }
                 clickCounts[menuName] = 0; // Reset click count
-            }, 300); // Adjust the delay (in milliseconds) as needed
+            }, 300); // Sesuaikan delay jika perlu
+        } else {
+            alert('Menu ini hanya bisa dipesan antara pukul 08:00 - 10:00.');
         }
+    } else {
+        // Logika untuk menu lain
+        if (!clickCounts[menuName]) {
+            clickCounts[menuName] = 0;
+        }
+
+        clickCounts[menuName] += 1;
+
+        clearTimeout(clickTimers[menuName]);
+
+        clickTimers[menuName] = setTimeout(() => {
+            if (clickCounts[menuName] === 2) {
+                addToChart(menuName);
+            } else if (clickCounts[menuName] === 3) {
+                removeFromChart(menuName);
+            }
+            clickCounts[menuName] = 0; // Reset click count
+        }, 300); // Sesuaikan delay jika perlu
+    }
+}
+
 
         function addToChart(menuName) {
             if (!chart[menuName]) {
