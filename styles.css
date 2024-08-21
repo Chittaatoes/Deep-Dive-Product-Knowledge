@@ -11,7 +11,7 @@
   position: fixed; /* Memastikan header tetap di atas */
   top: 0;
   left: 0;
-  width: 90%; /* Mengatur lebar header menjadi 100% */
+  width: 100%; /* Mengatur lebar header menjadi 100% */
   z-index: 1000; /* Menjaga header berada di atas elemen lain */
 }
 
