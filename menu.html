@@ -1305,8 +1305,8 @@
             const timeSensitiveMenus = ['The OG Scrambled Egg', 'Breakfast Burger', 'Chicken Quesadilla'];
             
             if (timeSensitiveMenus.includes(menuName)) {
-                if (hour >= 8 && hour < 10) {
-                    // Jika waktu berada dalam rentang 08:00 - 10:00, lanjutkan dengan logika klik ganda
+                if (hour >= 7 && hour < 10) {
+                    // Jika waktu berada dalam rentang 07:00 - 10:00, lanjutkan dengan logika klik ganda
                     if (!clickCounts[menuName]) {
                         clickCounts[menuName] = 0;
                     }
@@ -1474,10 +1474,36 @@
             }
         });
 
-        function toggleSearchBox() {
-                var searchBox = document.getElementById('searchBox');
-                searchBox.classList.toggle('active');
-            }
+// Script untuk mengaktifkan input dan menampilkan keyboard
+function toggleSearchBox() {
+    var searchBox = document.getElementById("searchBox");
+    var searchInput = document.getElementById("search-input");
+
+    // Menampilkan kotak pencarian jika belum terlihat
+    if (searchBox.style.display === "none" || !searchBox.style.display) {
+        searchBox.style.display = "block";
+    }
+
+    // Fokus ke input pencarian untuk menampilkan keyboard
+    searchInput.focus();
+}
+
+// Tambahkan event listener untuk menutup keyboard jika pengguna klik di luar kotak pencarian
+document.addEventListener('click', function(event) {
+    var searchBox = document.getElementById("searchBox");
+    var searchInput = document.getElementById("search-input");
+    var floatingButton = document.getElementById("floating-search-button");
+
+    // Menutup kotak pencarian jika klik di luar kotak pencarian dan tombol floating search
+    if (!searchBox.contains(event.target) && !floatingButton.contains(event.target)) {
+        searchInput.blur(); // Menghilangkan fokus dari input pencarian
+    }
+});
+
+// Pastikan search box tersembunyi saat pertama kali load
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("searchBox").style.display = "none";
+});
 
             function searchMenu() {
                 const input = document.getElementById('search-input').value.toLowerCase();
