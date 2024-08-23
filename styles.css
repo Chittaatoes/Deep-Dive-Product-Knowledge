@@ -450,6 +450,15 @@
   transform: translateY(-10px); /* Efek mengangkat saat di-hover */
 }
 
+#chart-container textarea {
+  width: 100%;
+  height: 150px; /* Atur tinggi textarea sesuai kebutuhan */
+  resize: vertical; /* Biarkan pengguna mengubah ukuran secara vertikal */
+  box-sizing: border-box; /* Memastikan padding dan border diperhitungkan dalam lebar dan tinggi */
+  margin: 10px 0; /* Tambahkan margin jika perlu */
+}
+
+
 /* Chart List */
 #chart-list {
   list-style-type: none;
