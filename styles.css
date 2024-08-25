@@ -186,7 +186,7 @@ body {
 
 .menu-category-header {
   padding: 20px 15px; /* Menambahkan padding atas dan bawah yang konsisten */
-  border-bottom: 1px solid #ddd; /* Memberikan garis bawah */
+  border-bottom: 0px solid #ddd; /* Memberikan garis bawah */
   background-color: #f9f9f9;
   margin-top: 20px; /* Jarak atas untuk memisahkan dari elemen sebelumnya */
 }
