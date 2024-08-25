@@ -186,7 +186,7 @@ body {
 
 .menu-category-header {
   padding: 20px 15px; /* Menambahkan padding atas dan bawah yang konsisten */
-  border-bottom: 0px solid #ddd; /* Memberikan garis bawah */
+  border-bottom: 1px solid #ddd; /* Memberikan garis bawah */
   background-color: #f9f9f9;
   margin-top: 20px; /* Jarak atas untuk memisahkan dari elemen sebelumnya */
 }
@@ -352,7 +352,7 @@ body {
     margin: 60px auto 40px;
   }
 
-  .menu-item {
+    .menu-item {
     width: 400px;
     height: 400px;
     margin: 50px auto;
@@ -364,10 +364,10 @@ body {
 
   .second-frame p {
     font-size: 24px;
-    padding-left
-    
+    padding-left: 20%;
+  }
 
-   .pasta:hover span {
+  .pasta:hover span {
     transform: scale(1.5) translateX(-14%) translateY(550%);
   }
 
