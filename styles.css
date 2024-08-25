@@ -1,37 +1,55 @@
-/* Header Styling */
-/* Styling untuk Header */
-.site-header {
-  background-color: #fff;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: fixed; /* Memastikan header tetap di atas */
-  top: 0;
-  left: 0;
-  width: 100%; /* Mengatur lebar header menjadi 100% */
-  z-index: 1000; /* Menjaga header berada di atas elemen lain */
+/* Reset default margin dan padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Pastikan padding dan border diperhitungkan dalam lebar dan tinggi elemen */
 }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  position: relative;
+
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+/* Jarak kiri dan kanan untuk tampilan mobile */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 15px; /* Mengurangi padding atas dan bawah, menambahkan padding kiri dan kanan */
+  }
+
+  .site-header {
+    padding: 10px 15px; /* Menambahkan padding kiri dan kanan di header */
+  }
+
+  .search-box {
+    width: 90%; /* Memastikan search box tidak melebar terlalu besar */
+  }
+
+  #chart-container, .menu-category-header, .menu-item, .menu-categories {
+    padding: 0 15px; /* Menambahkan padding kiri dan kanan pada kontainer konten utama */
+  }
+
+  .menu-item, #chart-container {
+    margin: 15px auto; /* Memastikan ada ruang di sekitar elemen */
+  }
 }
 
 .logo img {
   height: 35px;
 }
 
-.main-nav ul {
+.main-nav {
   display: flex;
+}
+
+.main-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  gap: 20px;
 }
 
 .main-nav li {
@@ -41,8 +59,8 @@
 .main-nav a {
   text-decoration: none;
   color: #333;
-  font-size: 18px;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  font-weight: bold;
+  padding: 5px;
 }
 
 .main-nav a:hover {
@@ -55,7 +73,6 @@
 /* Dropdown */
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 .dropbtn {
@@ -71,7 +88,7 @@
   display: none;
   position: absolute;
   background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 160px;
   z-index: 1;
 }
@@ -81,7 +98,6 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
 }
 
 .dropdown-content a:hover {
@@ -92,20 +108,64 @@
   display: block;
 }
 
-.header-right .search-icon img {
-  height: 24px;
-  transition: transform 0.3s ease;
+.menu-toggle {
+  display: none; /* Sembunyikan di desktop */
+  cursor: pointer;
+  position: relative;
 }
 
-.header-right {
-    margin: 10px; /* Sesuaikan margin jika perlu */
+.menu-toggle .bar {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Tampilan menu pada perangkat mobile */
+@media (max-width: 768px) {
+  .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #fff;
+      width: 200px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .menu.active {
+      display: flex;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
 }
 
 
 /* Search Box */
 .search-box {
-  position: center;
-  top: 90px;
+  position: fixed;
+  top: 65px; /* Adjust the vertical position */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for the box width */
   width: 300px;
   z-index: 10;
 }
@@ -116,262 +176,269 @@
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  box-sizing: border-box;
 }
 
+
+/* Menu Categories */
 .menu-category-header-awal {
-  padding-top: 15px;
+  padding-top: 50px;
 }
 
 .menu-category-header {
-  margin: 40px 0 20px;
-  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
 }
 
 .menu-category-header h2 {
-  font-size: 24px;
+  margin: 0;
+  font-size: 18px;
   color: #333;
-  border-bottom: 2px solid #ddd;
-  display: inline-block;
-  padding-bottom: 10px;
 }
 
+/* Food Menu */
+.food-menu {
+  padding-bottom: 40px;
+  text-align: center;
+}
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+.food-menu h2 {
+  color: #666;
+  margin: 30px auto;
+}
+
+.menu-item {
+  position: relative;
+  margin: 15px auto;
+  text-align: center;
+  width: 280px;
+  height: 280px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-logo {
+  position: absolute;
+  display: inline-block;
+  width: 16%;
+  top: 14%;
+  left: 42%;
+}
+
+.menu span {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  color: #d9d9d9;
+}
+
+.fruits {
+  background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/fruits.jpg");
+}
+
+.pasta {
+  background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/pasta.jpg");
+}
+
+.steak {
+  background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/steak.jpg");
+}
+
+.fruits span {
+  transition: transform 900ms ease-in-out;
+}
+
+.fruits:hover span {
+  transform: scale(1.5) translateY(20px);
+}
+
+.fruits:hover .first-frame {
+  opacity: 1;
+}
+
+.first-frame {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  width: 83%;
+  height: 81%;
+  border: 2px solid #f6bbbb;
+  z-index: 1;
+  opacity: 0;
+}
+
+.first-frame p {
+  color: #d9d9d9;
+  padding-top: 60%;
+}
+
+.second-frame {
+  position: absolute;
+  top: 51%;
+  left: 9%;
+  border-left: 1px #f6bbbb solid;
+  height: 40%;
+  z-index: 1;
+  opacity: 0;
+}
+
+.second-frame p {
+  color: #f6bbbb;
+  font-size: 20px;
+  padding-left: 6%;
+  padding-bottom: 20%;
+}
+
+.pasta:hover .second-frame {
+  opacity: 1;
+}
+
+.pasta span {
+  transition: transform 900ms ease-in-out;
+}
+
+.pasta:hover span {
+  transform: scale(1.5) translateX(-12%) translateY(395%);
+}
+
+.pasta:hover {
+  opacity: 0.7;
+}
+
+.steak .decor-line1,
+.steak .decor-line2 {
+  position: absolute;
+  width: 0.5%;
+  height: 0.5%;
+  z-index: 1;
+  opacity: 0;
+  background-color: #f6bbbb;
+  animation: mydecor 2s ease-in-out infinite alternate;
+}
+
+.steak .decor-line1 {
+  top: 8%;
+  left: 8%;
+}
+
+.steak .decor-line2 {
+  top: 50%;
+  right: 7%;
+}
+
+@keyframes mydecor {
+  from {
+    width: 1%;
   }
+  to {
+    width: 85%;
+  }
+}
+
+.steak:hover .decor-line1,
+.steak:hover .decor-line2 {
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (min-width: 451px) {
   .food-menu {
-    padding-bottom: 40px;
-    text-align: center;
-  }
-  
-  .food-menu h2 {
-    color: #666;
-    margin: 30px auto 30px auto;
-  }
-  
-  .menu-item {
-    position: relative;
-    margin: 15px auto 15px auto;
-    text-align: center;
-    width: 280px;
-    height: 280px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .fruits {
-    background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/fruits.jpg");
-  }
-  
-  .pasta {
-    background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/pasta.jpg");
-  }
-  
-  .steak {
-    background-image: url("https://s3.amazonaws.com/projects.loratadin.com/coffeeshop/images/steak.jpg");
-  }
-  
-  .menu-logo {
-    position: absolute;
-    display: inline-block;
-    width: 16%;
-    top: 14%;
-    left: 42%;
-  }
-  
-  .menu span {
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    color: #d9d9d9;
-  }
-  
-  .fruits span {
-    transition: transform 900ms ease-in-out;
-  }
-  
-  .fruits:hover span {
-    transform: scale(1.5, 1.5) translateY(20px);
-  }
-  
-  .fruits:hover .first-frame {
-    opacity: 1;
-  }
-  
-  .first-frame {
-    position: absolute;
-    top: 8%;
-    left: 8%;
-    width: 83%;
-    height: 81%;
-    border: 2px solid #f6bbbb;
-    z-index: 1;
-    opacity: 0;
-  }
-  
-  .first-frame p {
-    color: #d9d9d9;
-    padding-top: 60%;
-  }
-  
-  .second-frame {
-    position: absolute;
-    top: 51%;
-    left: 9%;
-    border-left: 1px #f6bbbb solid;
-    height: 40%;
-    z-index: 1;
-    opacity: 0;
-  }
-  
-  .second-frame p {
-    color: #f6bbbb;
-    font-size: 20px;
-    padding-left: 6%;
-    padding-bottom: 20%;
-  }
-  
-  .pasta:hover .second-frame {
-    opacity: 1;
-  }
-  
-  .pasta span {
-    transition: transform 900ms ease-in-out;
-  }
-  
-  .pasta:hover span {
-    transform: scale(1.5, 1.5) translateX(-12%) translateY(395%);
-  }
-  
-  .pasta:hover {
-    opacity: 0.7;
-  }
-  
-  .steak .decor-line1 {
-    top: 8%;
-    left: 8%;
-  }
-  
-  .steak .decor-line2 {
-    top: 50%;
-    right: 7%;
-  }
-  
-  .steak .decor-line1,
-  .steak .decor-line2 {
-    position: absolute;
-    width: 0.5%;
-    height: 0.5%;
-    z-index: 1;
-    opacity: 0;
-    background-color: #f6bbbb;
-    animation: mydecor 2s ease-in-out 0s infinite;
-    animation-direction: alternate;
-  }
-  
-  @keyframes mydecor {
-    from {
-      width: 1%;
-    }
-    to {
-      width: 85%;
-    }
-  }
-  
-  .steak:hover .decor-line1,
-  .steak:hover .decor-line2 {
-    opacity: 1;
-  }
-  @media /* medium */ (min-width: 451px) {
-    .food-menu {
-      padding-bottom: 50px;
-      text-align: center;
-    }
-    .food-menu h2 {
-      margin: 60px auto 40px auto;
-    }
-    .menu-item {
-      width: 400px;
-      height: 400px;
-      margin: 50px auto 50px auto;
-    }
-    .menu span {
-      left: 36%;
-    }
-    .second-frame p {
-      font-size: 24px;
-      padding-left: 20%;
-    }
-    .pasta:hover span {
-      transform: scale(1.5, 1.5) translateX(-14%) translateY(550%);
-    }
-    .second-frame {
-      left: 8%;
-      border-left: 2px #f6bbbb solid;
-    }
-  }
-  @media /* large */ (min-width: 769px) {
-    .food-menu {
-      padding-bottom: 80px;
-      text-align: center;
-    }
-    .food-menu h2 {
-      margin: 80px auto 40px auto;
-    }
-    .menu-wrapper {
-      display: flex;
-      justify-content: space-around;
-    }
-    .menu-item {
-      width: 250px;
-      height: 250px;
-    }
-    .menu span {
-      left: 30%;
-    }
-    .second-frame p {
-      font-size: 16px;
-      padding-left: 17%;
-    }
-    .pasta:hover span {
-      transform: scale(1.5, 1.5) translateX(-4%) translateY(350%);
-    }
-  }
-  @media /* extra-large */ (min-width: 1025px) {
-      .food-menu {
-      padding-bottom: 100px;
-    }
-    .food-menu h2 {
-      margin: 60px auto 40px auto;
-    }
-    .menu-item {
-      width: 300px;
-      height: 300px;
-    }
-    .menu-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .menu span {
-      left: 32%;
-    }
-    .second-frame p {
-      font-size: 17px;
-    }
-    .pasta:hover span {
-      transform: scale(1.5, 1.5) translateX(-12%) translateY(450%);
-    }
+    padding-bottom: 50px;
   }
 
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f8f8f8;
+  .food-menu h2 {
+    margin: 60px auto 40px;
+  }
+
+    .menu-item {
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+  }
+
+  .menu span {
+    left: 36%;
+  }
+
+  .second-frame p {
+    font-size: 24px;
+    padding-left: 20%;
+  }
+
+  .pasta:hover span {
+    transform: scale(1.5) translateX(-14%) translateY(550%);
+  }
+
+  .second-frame {
+    left: 8%;
+    border-left: 2px #f6bbbb solid;
+  }
+}
+
+@media (min-width: 769px) {
+  .food-menu {
+    padding-bottom: 80px;
+  }
+
+  .food-menu h2 {
+    margin: 80px auto 40px;
+  }
+
+  .menu-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu-item {
+    width: 250px;
+    height: 250px;
+  }
+
+  .menu span {
+    left: 30%;
+  }
+
+  .second-frame p {
+    font-size: 16px;
+    padding-left: 17%;
+  }
+
+  .pasta:hover span {
+    transform: scale(1.5) translateX(-4%) translateY(350%);
+  }
+}
+
+@media (min-width: 1025px) {
+  .food-menu {
+    padding-bottom: 100px;
+  }
+
+  .food-menu h2 {
+    margin: 60px auto 40px;
+  }
+
+  .menu-item {
+    width: 300px;
+    height: 300px;
+  }
+
+  .menu-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .menu span {
+    left: 32%;
+  }
+
+  .second-frame p {
+    font-size: 17px;
+  }
+
+  .pasta:hover span {
+    transform: scale(1.5) translateX(-12%) translateY(450%);
+  }
 }
 
 .menu-categories {
@@ -384,11 +451,18 @@
 }
 
 .category-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.category-item:hover {
+  transform: translateY(-10px); /* Efek mengangkat saat di-hover */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.2); /* Shadow lebih besar saat di-hover */
+}
+
 
 .category-item img {
     width: 100%;
@@ -495,12 +569,13 @@
   flex-grow: 1; /* Memungkinkan nama menu untuk mengambil ruang yang tersedia */
   font-size: 16px;
   text-align: left;
+  margin-right: 10px; /* Menambahkan jarak antara nama menu dan tombol */
 }
 
 .quantity-controls {
   display: flex;
-  justify-content: flex-end; /* Pastikan tombol berada di sebelah kanan */
   gap: 5px; /* Jarak antara tombol */
+  margin-left: auto; /* Memindahkan elemen ke sisi kanan */
 }
 
 .quantity-controls button {
@@ -511,6 +586,8 @@
   background-color: #f9f9f9; /* Warna latar belakang netral */
   border-radius: 3px;
 }
+
+
 
 
 /* Button Order */
@@ -551,7 +628,20 @@
   max-height: none; /* Membiarkan textarea untuk terus bertambah tinggi */
 }
 
-
+/* Notification Styles */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 1000;
+}
 
 /* Button container styling */
 .button-container {
