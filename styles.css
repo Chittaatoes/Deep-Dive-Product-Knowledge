@@ -262,7 +262,7 @@ body {
 /* Search Box */
 .search-box {
   position: fixed;
-  top: 65px; /* Adjust the vertical position */
+  top: 70px; /* Adjust the vertical position */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for the box width */
   width: 300px;
