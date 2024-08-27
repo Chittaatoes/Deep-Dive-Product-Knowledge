@@ -189,6 +189,7 @@ body {
   border-bottom: 0px solid #ddd; /* Memberikan garis bawah */
   background-color: #f9f9f9;
   margin-top: 20px; /* Jarak atas untuk memisahkan dari elemen sebelumnya */
+  text-align: center;
 }
 
 .menu-category-header h2 {
