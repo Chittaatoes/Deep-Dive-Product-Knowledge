@@ -5,6 +5,44 @@
   box-sizing: border-box; /* Pastikan padding dan border diperhitungkan dalam lebar dan tinggi elemen */
 }
 
+/* Gaya Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease; /* Durasi transisi untuk menyembunyikan loading screen */
+}
+
+/* Spinner Animation */
+.spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-left: 8px solid #f4b100; /* Ganti dengan warna yang diinginkan */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation Keyframes */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Konten Utama */
+#main-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
 
 /* Body */
 body {
@@ -12,6 +50,67 @@ body {
   padding: 20px;
   background-color: #f8f8f8;
 }
+
+/* Popup Notifikasi Styles */
+.notification-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0; /* Awalnya tersembunyi */
+  transform: translateY(20px); /* Memindahkan popup sedikit ke bawah dari posisi akhir */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Durasi dan jenis transisi */
+  z-index: 1000;
+  max-width: 300px; /* Tentukan lebar maksimum */
+  box-sizing: border-box;
+}
+
+.notification-popup.show {
+  opacity: 1; /* Menampilkan popup dengan opacity penuh */
+  transform: translateY(0); /* Mengembalikan popup ke posisi akhir */
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column; /* Mengatur teks menjadi kolom */
+  align-items: flex-start; /* Menyelaraskan teks ke kiri */
+  position: relative; /* Untuk memposisikan tombol close relatif terhadap konten */
+}
+
+.notification-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.notification-content .highlight {
+  display: block; /* Mengatur teks highlight agar berada di bawah */
+  margin-top: 5px; /* Jarak antara baris */
+  font-weight: bold;
+  color: #f4b100; /* Ganti dengan warna yang diinginkan */
+}
+
+.notification-close {
+  position: absolute; /* Posisi absolut untuk memposisikan tombol close */
+  top: 0px;
+  right: -5px;
+  background: none;
+  border: none;
+  color: #ff2c2c;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s; /* Transisi warna dan transformasi */
+}
+
+.notification-close:hover {
+  color: #ffffff; /* Warna saat hover */
+  transform: scale(1.1); /* Membesarkan tombol saat hover */
+}
+
+
 
 /* Jarak kiri dan kanan untuk tampilan mobile */
 @media (max-width: 768px) {
@@ -786,3 +885,30 @@ body {
   margin-top: 10px;
 }
 
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #f7f8f7; /* Warna latar belakang tombol */
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0; /* Awalnya tersembunyi */
+    transition: opacity 0.3s ease;
+}
+
+.scroll-to-top img {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+}
+
+.scroll-to-top.show {
+    opacity: 1; /* Tampilkan tombol saat di-scroll */
+}
