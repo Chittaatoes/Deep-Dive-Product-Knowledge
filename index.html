@@ -1753,6 +1753,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+    const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
+    const chartContainer = document.getElementById('chart-container');
+
+    scrollToBottomBtn.addEventListener('click', function() {
+        chartContainer.scrollIntoView({
+            behavior: 'smooth', // Smooth scrolling
+            block: 'start'      // Align to the top of the viewport
+        });
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Tunggu beberapa detik sebelum menghapus loading screen (misalnya 2 detik)
     setTimeout(function() {
@@ -2130,9 +2143,14 @@ isDragging = false;
 
     </script>
 
-    <!-- Button to scroll to the top -->
-<div id="scroll-to-top" class="scroll-to-top">
+<!-- Button to scroll to the top -->
+<div id="scroll-to-top" class="scroll-button">
     <img src="img/up-arrow.png" alt="Scroll to Top">
+</div>
+
+<!-- Button to scroll to the bottom -->
+<div id="scroll-to-bottom" class="scroll-button">
+    <img src="img/up-arrow.png" alt="Scroll to Bottom">
 </div>
 
     </body>
