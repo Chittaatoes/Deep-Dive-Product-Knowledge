@@ -886,30 +886,40 @@ body {
   margin-top: 10px;
 }
 
-.scroll-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #f7f8f7; /* Warna latar belakang tombol */
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    opacity: 0; /* Awalnya tersembunyi */
-    transition: opacity 0.3s ease;
+/* General styles for scroll buttons */
+.scroll-button {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-color: #f7f7f71f; /* Button background color */
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.scroll-to-top img {
-    width: 24px;
-    height: 24px;
-    color: #fff;
+.scroll-button img {
+  width: 70%;
+  height: 70%;
 }
 
-.scroll-to-top.show {
-    opacity: 1; /* Tampilkan tombol saat di-scroll */
+/* Position the scroll-to-top button */
+#scroll-to-top {
+  bottom: 80px; /* Position above the bottom of the page */
+  right: 20px;  /* Position to the right of the page */
+}
+
+/* Position the scroll-to-bottom button */
+#scroll-to-bottom {
+  bottom: 20px; /* Position at the bottom of the page */
+  right: 20px;  /* Position to the right of the page */
+}
+
+/* Vertical reflection effect */
+.scroll-button img {
+  transform: scaleY(-1); /* Create the vertical reflection effect */
 }
