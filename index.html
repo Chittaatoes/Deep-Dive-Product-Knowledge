@@ -223,15 +223,11 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#">MENU</a></li>
+                    <li><a href="#" id="menu-link">MENU (Tekan Untuk Kembali Keatas)</a></li>
                 </ul>
             </nav>
-            <div class="header-right">
-                <a href="#" class="search-icon" onclick="toggleSearchBox()">
-                    <img src="img/search-icon.png" alt="Search">
-                </a>
-            </div>
-</header>
+            <!-- Konten header lainnya -->
+        </header>
 <!-- Pembatas Header -->
 
 <body>
@@ -2046,6 +2042,14 @@ document.addEventListener('touchend', function () {
 isDragging = false;
 });
 
-
+     // JavaScript untuk scroll ke atas
+     document.getElementById('menu-link').addEventListener('click', function(event) {
+          event.preventDefault(); // Mencegah perilaku default klik
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth' // Efek scroll yang mulus
+          });
+      });
 
     </script>
+    </body>
