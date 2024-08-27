@@ -95,7 +95,7 @@ body {
 
 .notification-close {
   position: absolute; /* Posisi absolut untuk memposisikan tombol close */
-  top: 0px;
+  top: 2px;
   right: -5px;
   background: none;
   border: none;
