@@ -100,7 +100,7 @@ body {
   background: none;
   border: none;
   color: #ff2c2c;
-  font-size: 13px;
+  font-size: 11px;
   cursor: pointer;
   transition: color 0.3s, transform 0.3s; /* Transisi warna dan transformasi */
 }
