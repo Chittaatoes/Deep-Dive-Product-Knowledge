@@ -215,15 +215,25 @@
     </head>
     
     <body>
+        <!-- Loading Screen -->
+<div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+</div>
+
+<!-- Konten utama halaman -->
+<div id="main-content" style="display: none;">
+    <!-- Konten halaman Anda di sini -->
+</div>
+
         <header class="site-header">
             <div class="logo">
                 <a href="#">
-                    <img src="img/logo.png" id="menu-link" alt="Monsier Spoon">
+                    <img src="img/logo.png" id="menu-link1" alt="Monsier Spoon">
                 </a>
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#" id="menu-link">MENU</a></li>
+                    <li><a href="#" id="menu-link2">MENU</a></li>
                 </ul>
             </nav>
             <!-- Konten header lainnya -->
@@ -231,6 +241,17 @@
 <!-- Pembatas Header -->
 
 <body>
+
+<!-- Popup Notifikasi -->
+<div id="notification-popup" class="notification-popup">
+    <div class="notification-content">
+        <p>
+            Tap sekali untuk melihat detail,<br>
+            <span class="highlight">Tap 2x untuk menambahkan ke chart</span>
+        </p>
+        <button id="notification-close" class="notification-close">(CLOSE)</button>
+    </div>
+</div>
 
      <!-- Search Box -->
      <div id="searchBox" class="search-box">
@@ -1716,6 +1737,54 @@
     <!-- JavaScript -->
     <script>
 
+document.addEventListener('DOMContentLoaded', function () {
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) { // Tampilkan tombol jika scroll lebih dari 300px
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas secara halus
+        });
+    });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tunggu beberapa detik sebelum menghapus loading screen (misalnya 2 detik)
+    setTimeout(function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        
+        // Sembunyikan loading screen
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.pointerEvents = 'none'; // Nonaktifkan interaksi dengan loading screen
+        
+        // Tampilkan konten utama
+        mainContent.style.display = 'block';
+        mainContent.style.opacity = '1';
+    }, 2000); // Ganti dengan durasi yang diinginkan
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const notificationPopup = document.getElementById('notification-popup');
+    const notificationClose = document.getElementById('notification-close');
+
+    // Tampilkan popup setelah 3 detik
+    setTimeout(function() {
+        notificationPopup.classList.add('show');
+    }, 3000);
+
+    // Tutup popup saat tombol close ditekan
+    notificationClose.addEventListener('click', function() {
+        notificationPopup.classList.remove('show');
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const kategoriItems = document.querySelectorAll('.kategori-item');
 
@@ -2043,7 +2112,15 @@ isDragging = false;
 });
 
      // JavaScript untuk scroll ke atas
-     document.getElementById('menu-link').addEventListener('click', function(event) {
+     document.getElementById('menu-link1').addEventListener('click', function(event) {
+          event.preventDefault(); // Mencegah perilaku default klik
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth' // Efek scroll yang mulus
+          });
+      });
+           // JavaScript untuk scroll ke atas
+     document.getElementById('menu-link2').addEventListener('click', function(event) {
           event.preventDefault(); // Mencegah perilaku default klik
           window.scrollTo({
               top: 0,
@@ -2052,4 +2129,10 @@ isDragging = false;
       });
 
     </script>
+
+    <!-- Button to scroll to the top -->
+<div id="scroll-to-top" class="scroll-to-top">
+    <img src="img/up-arrow.png" alt="Scroll to Top">
+</div>
+
     </body>
