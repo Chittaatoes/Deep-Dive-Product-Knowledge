@@ -542,20 +542,27 @@ body {
   }
 }
 
+/* Container untuk Menempatkan Header di Tengah Halaman */
+.container {
+  display: flex;
+  justify-content: center; /* Menempatkan elemen di tengah secara horizontal */
+  align-items: center; /* Menempatkan elemen di tengah secara vertikal */
+  height: 50px; /* Mengatur tinggi container agar memenuhi seluruh tinggi viewport */
+  background-color: #F8F8F8; /* Latar belakang container untuk kontras */
+}
+
 /* Kategori Header */
 .kategori-header {
   text-align: center;
-  margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
   color: #fff;
   position: relative;
   display: inline-block;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradien latar belakang saat di-hover */
-  transform: scale(1.05); /* Memperbesar sedikit saat di-hover */
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradien latar belakang */
   padding: 10px 20px;
   border-radius: 10px;
-  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
@@ -585,6 +592,7 @@ body {
 .kategori-header:hover::before {
   opacity: 1; /* Membuat efek titik bergetar terlihat saat di-hover */
 }
+
 
 
 /* Slider Container */
