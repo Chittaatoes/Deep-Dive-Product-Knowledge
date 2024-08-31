@@ -1923,9 +1923,10 @@
 
                 <!-- Chart Section -->
                 <div id="chart-container">
-                    <h2>Chart</h2>
+                    <h2>Order Request</h2>
                     <ul id="chart-list"></ul>
                     <textarea id="special-request" placeholder="Input special request here..."></textarea>
+                    <button id="clear-special-request" style="height: 35px; text-align: center; background-color: rgba(255, 0, 0, 0.678);">Clear Addons</button>
                     <div class="button-container">
                         <button class="button button-order" onclick="sendOrder()">Order</button>
                         <button class="button button-clear" onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
@@ -1942,12 +1943,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     const clearSearchButton = document.getElementById('clear-search');
     const searchInput = document.getElementById('search-input');
+    const clearSpecialRequestButton = document.getElementById('clear-special-request');
+    const specialRequestInput = document.getElementById('special-request');
 
-    // Event listener untuk tombol "x"
+    // Event listener untuk tombol "x" di search input
     clearSearchButton.addEventListener('click', function() {
         searchInput.value = ''; // Hapus teks di input search
         searchInput.focus(); // Fokuskan input search jika diperlukan
         searchMenu(); // Panggil fungsi pencarian untuk menyembunyikan item jika diperlukan
+    });
+
+    // Event listener untuk tombol "x" di special request input
+    clearSpecialRequestButton.addEventListener('click', function() {
+        specialRequestInput.value = ''; // Hapus teks di special request input
+        specialRequestInput.focus(); // Fokuskan special request input jika diperlukan
     });
 
     // Toggle search box visibility
@@ -1962,24 +1971,23 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
-        const scrollToTopBtn = document.getElementById('scroll-to-top');
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
 
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 300) { // Tampilkan tombol jika scroll lebih dari 300px
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas secara halus
-        });
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) { // Tampilkan tombol jika scroll lebih dari 300px
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
+    scrollToTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas secara halus
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
     const chartContainer = document.getElementById('chart-container');
 
@@ -1990,7 +1998,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     // Tunggu beberapa detik sebelum menghapus loading screen (misalnya 2 detik)
@@ -2023,7 +2030,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const kategoriItems = document.querySelectorAll('.kategori-item');
 
@@ -2042,8 +2048,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-        const chart = {};
+const chart = {};
 const clickCounts = {};
 const clickTimers = {};
 const menusWithDoneness = [
@@ -2110,26 +2115,26 @@ function handleClick(menuName) {
 }
 
 function addToChart(menuName) {
-if (!chart[menuName]) {
-chart[menuName] = 0;
-}
-chart[menuName] += 1;
-displayChart();
+    if (!chart[menuName]) {
+        chart[menuName] = 0;
+    }
+    chart[menuName] += 1;
+    displayChart();
 
-// Memeriksa jika menu memerlukan tingkat kematangan
-if (menusWithDoneness.includes(menuName)) {
-const doneness = prompt('Input tingkat kematangan: rare, medium rare, medium, medium well, or well done.');
-if (doneness) {
-    chart[menuName] = { quantity: chart[menuName], doneness: doneness };
-}
-}
+    // Memeriksa jika menu memerlukan tingkat kematangan
+    if (menusWithDoneness.includes(menuName)) {
+        const doneness = prompt('Input tingkat kematangan: rare, medium rare, medium, medium well, or well done.');
+        if (doneness) {
+            chart[menuName] = { quantity: chart[menuName], doneness: doneness };
+        }
+    }
 
-// Mainkan suara
-playSound();
+    // Mainkan suara
+    playSound();
 
-// Scroll ke bagian chart setelah item ditambahkan
-const chartContainer = document.getElementById('chart-container');
-chartContainer.scrollIntoView({ behavior: 'smooth' });
+    // Scroll ke bagian chart setelah item ditambahkan
+    const chartContainer = document.getElementById('chart-container');
+    chartContainer.scrollIntoView({ behavior: 'smooth' });
 }
 
 function removeFromChart(menuName) {
@@ -2221,7 +2226,6 @@ async function sendOrder() {
     }
 }
 
-
 window.addEventListener('beforeunload', function (e) {
     if (Object.keys(chart).length > 0) {
         const orderItems = Object.entries(chart).map(([menuName, value]) => {
@@ -2246,67 +2250,67 @@ window.addEventListener('beforeunload', function (e) {
 
 // Script untuk mengaktifkan input dan menampilkan keyboard
 function toggleSearchBox() {
-var searchBox = document.getElementById("searchBox");
-var searchInput = document.getElementById("search-input");
+    var searchBox = document.getElementById("searchBox");
+    var searchInput = document.getElementById("search-input");
 
-// Menampilkan kotak pencarian jika belum terlihat
-if (searchBox.style.display === "none" || !searchBox.style.display) {
-searchBox.style.display = "block";
-}
+    // Menampilkan kotak pencarian jika belum terlihat
+    if (searchBox.style.display === "none" || !searchBox.style.display) {
+        searchBox.style.display = "block";
+    }
 
-// Fokus ke input pencarian untuk menampilkan keyboard
-searchInput.focus();
+    // Fokus ke input pencarian untuk menampilkan keyboard
+    searchInput.focus();
 }
 
 // Tambahkan event listener untuk menutup keyboard jika pengguna klik di luar kotak pencarian
 document.addEventListener('click', function(event) {
-var searchBox = document.getElementById("searchBox");
-var searchInput = document.getElementById("search-input");
-var floatingButton = document.getElementById("floating-search-button");
-var textAreas = document.getElementsByTagName('textarea');
+    var searchBox = document.getElementById("searchBox");
+    var searchInput = document.getElementById("search-input");
+    var floatingButton = document.getElementById("floating-search-button");
+    var textAreas = document.getElementsByTagName('textarea');
 
-// Cek jika klik di luar kotak pencarian, floating button, dan textarea
-var clickedOutside = !searchBox.contains(event.target) && 
-                !floatingButton.contains(event.target) &&
-                Array.from(textAreas).every(textarea => !textarea.contains(event.target));
+    // Cek jika klik di luar kotak pencarian, floating button, dan textarea
+    var clickedOutside = !searchBox.contains(event.target) && 
+                        !floatingButton.contains(event.target) &&
+                        Array.from(textAreas).every(textarea => !textarea.contains(event.target));
 
-if (clickedOutside) {
-searchInput.blur(); // Menghilangkan fokus dari input pencarian
-searchBox.style.display = "none"; // Menyembunyikan kotak pencarian
-}
+    if (clickedOutside) {
+        searchInput.blur(); // Menghilangkan fokus dari input pencarian
+        searchBox.style.display = "none"; // Menyembunyikan kotak pencarian
+    }
 });
 
 // Pastikan search box tersembunyi saat pertama kali load
 document.addEventListener("DOMContentLoaded", function() {
-document.getElementById("searchBox").style.display = "none";
+    document.getElementById("searchBox").style.display = "none";
 });
 
 function searchMenu() {
-const input = document.getElementById('search-input').value.toLowerCase();
-const menuItems = document.getElementsByClassName('category-item');
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const menuItems = document.getElementsByClassName('category-item');
 
-for (let i = 0; i < menuItems.length; i++) {
-const item = menuItems[i];
-const title = item.querySelector('.category-info h3').textContent.toLowerCase();
-const categories = item.getAttribute('data-category').toLowerCase();
+    for (let i = 0; i < menuItems.length; i++) {
+        const item = menuItems[i];
+        const title = item.querySelector('.category-info h3').textContent.toLowerCase();
+        const categories = item.getAttribute('data-category').toLowerCase();
 
-// Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
-if (title.includes(input) || categories.includes(input)) {
-    item.style.display = '';
-} else {
-    item.style.display = 'none';
-}
-}
+        // Tampilkan item jika pencarian sesuai dengan judul atau salah satu kategori
+        if (title.includes(input) || categories.includes(input)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    }
 }
 
 function clearChart() {
-const confirmation = confirm('Apakah kamu yakin ingin menghapus semua menu dari chart?');
-if (confirmation) {
-for (const menuName in chart) {
-    delete chart[menuName];
-}
-displayChart();
-}
+    const confirmation = confirm('Apakah kamu yakin ingin menghapus semua menu dari chart?');
+    if (confirmation) {
+        for (const menuName in chart) {
+            delete chart[menuName];
+        }
+        displayChart();
+    }
 }
 
 // Tambahkan ini di bagian akhir script dalam <script> tag
@@ -2315,62 +2319,63 @@ let isDragging = false;
 let offsetX, offsetY;
 
 floatingButton.addEventListener('mousedown', function (e) {
-isDragging = true;
-offsetX = e.clientX - floatingButton.getBoundingClientRect().left;
-offsetY = e.clientY - floatingButton.getBoundingClientRect().top;
+    isDragging = true;
+    offsetX = e.clientX - floatingButton.getBoundingClientRect().left;
+    offsetY = e.clientY - floatingButton.getBoundingClientRect().top;
 });
 
 document.addEventListener('mousemove', function (e) {
-if (isDragging) {
-const left = e.clientX - offsetX;
-const top = e.clientY - offsetY;
-floatingButton.style.left = `${Math.max(0, Math.min(window.innerWidth - floatingButton.offsetWidth, left))}px`;
-floatingButton.style.top = `${Math.max(0, Math.min(window.innerHeight - floatingButton.offsetHeight, top))}px`;
-}
+    if (isDragging) {
+        const left = e.clientX - offsetX;
+        const top = e.clientY - offsetY;
+        floatingButton.style.left = `${Math.max(0, Math.min(window.innerWidth - floatingButton.offsetWidth, left))}px`;
+        floatingButton.style.top = `${Math.max(0, Math.min(window.innerHeight - floatingButton.offsetHeight, top))}px`;
+    }
 });
 
 document.addEventListener('mouseup', function () {
-isDragging = false;
+    isDragging = false;
 });
 
 // Touch event handling for mobile devices
 floatingButton.addEventListener('touchstart', function (e) {
-isDragging = true;
-const touch = e.touches[0];
-offsetX = touch.clientX - floatingButton.getBoundingClientRect().left;
-offsetY = touch.clientY - floatingButton.getBoundingClientRect().top;
+    isDragging = true;
+    const touch = e.touches[0];
+    offsetX = touch.clientX - floatingButton.getBoundingClientRect().left;
+    offsetY = touch.clientY - floatingButton.getBoundingClientRect().top;
 });
 
 document.addEventListener('touchmove', function (e) {
-if (isDragging) {
-const touch = e.touches[0];
-const left = touch.clientX - offsetX;
-const top = touch.clientY - offsetY;
-floatingButton.style.left = `${Math.max(0, Math.min(window.innerWidth - floatingButton.offsetWidth, left))}px`;
-floatingButton.style.top = `${Math.max(0, Math.min(window.innerHeight - floatingButton.offsetHeight, top))}px`;
-}
+    if (isDragging) {
+        const touch = e.touches[0];
+        const left = touch.clientX - offsetX;
+        const top = touch.clientY - offsetY;
+        floatingButton.style.left = `${Math.max(0, Math.min(window.innerWidth - floatingButton.offsetWidth, left))}px`;
+        floatingButton.style.top = `${Math.max(0, Math.min(window.innerHeight - floatingButton.offsetHeight, top))}px`;
+    }
 });
 
 document.addEventListener('touchend', function () {
-isDragging = false;
+    isDragging = false;
 });
 
-     // JavaScript untuk scroll ke atas
-     document.getElementById('menu-link1').addEventListener('click', function(event) {
-          event.preventDefault(); // Mencegah perilaku default klik
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth' // Efek scroll yang mulus
-          });
-      });
-           // JavaScript untuk scroll ke atas
-     document.getElementById('menu-link2').addEventListener('click', function(event) {
-          event.preventDefault(); // Mencegah perilaku default klik
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth' // Efek scroll yang mulus
-          });
-      });
+// JavaScript untuk scroll ke atas
+document.getElementById('menu-link1').addEventListener('click', function(event) {
+    event.preventDefault(); // Mencegah perilaku default klik
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Efek scroll yang mulus
+    });
+});
+
+// JavaScript untuk scroll ke atas
+document.getElementById('menu-link2').addEventListener('click', function(event) {
+    event.preventDefault(); // Mencegah perilaku default klik
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Efek scroll yang mulus
+    });
+});
 
     </script>
 
