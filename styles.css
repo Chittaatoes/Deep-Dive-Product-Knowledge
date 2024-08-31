@@ -762,9 +762,8 @@ body {
 @media (max-width: 767px) {
   #chart-container {
       padding: 50px; /* Padding lebih kecil di tampilan mobile */
-      /*margin: 50 50px; /* Margin di kiri dan kanan untuk tampilan mobile */
+      margin: 50 50px; /* Margin di kiri dan kanan untuk tampilan mobile */
       margin-left: 30px;
-      margin-right: 30px;
       /* Atur lebar maksimum jika diperlukan */
       max-width: calc(100% - 50px); /* Kurangi lebar maksimum dengan padding */
   }
@@ -931,3 +930,63 @@ body {
   right: 20px;  /* Position to the right of the page */
 }
 
+/* General Footer Styles */
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo img {
+  width: 150px; /* Adjust the size of the logo */
+  height: auto;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.social-media {
+  margin: 10px 0;
+}
+
+.social-media a {
+  margin: 0 10px;
+}
+
+.social-media img {
+  width: 24px; /* Adjust the size of social media icons */
+  height: auto;
+}
+
+.footer-bottom {
+  margin-top: 10px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 14px;
+}
