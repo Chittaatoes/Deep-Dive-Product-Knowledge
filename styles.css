@@ -761,7 +761,7 @@ body {
 /* Aturan khusus untuk tampilan mobile */
 @media (max-width: 767px) {
   #chart-container {
-      padding: 10px; /* Padding lebih kecil di tampilan mobile */
+      padding: 50px; /* Padding lebih kecil di tampilan mobile */
       margin: 0 10px; /* Margin di kiri dan kanan untuk tampilan mobile */
       /* Atur lebar maksimum jika diperlukan */
       max-width: calc(100% - 50px); /* Kurangi lebar maksimum dengan padding */
