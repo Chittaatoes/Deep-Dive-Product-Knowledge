@@ -62,9 +62,10 @@
     
             /* Search box styling */
             /* Search Box */
+/* Styling untuk search box */
 .search-box {
     position: fixed;
-    top: 20px; /* Sesuaikan dengan kebutuhan */
+    top: 170px; /* Jarak dari header, sesuaikan dengan tinggi header ditambah sedikit ruang */
     right: 20px;
     background-color: #fff;
     padding: 10px;
@@ -73,9 +74,10 @@
     display: flex;
     align-items: center;
     width: 300px; /* Sesuaikan dengan kebutuhan */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk visibilitas lebih baik */
 }
 
+/* Styling untuk input di dalam search box */
 .search-box input {
     border: none;
     outline: none;
@@ -83,6 +85,7 @@
     padding: 5px;
 }
 
+/* Styling untuk tombol clear search */
 .clear-search {
     background: none;
     border: none;
@@ -91,26 +94,27 @@
     cursor: pointer;
     margin-left: 10px;
 }
-    
-            /* Button styling */
-            .button {
-                padding: 10px 20px;
-                font-size: 16px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-right: 10px;
-            }
-    
-            .button-order {
-                background-color: #4CAF50;
-                color: white;
-            }
-    
-            .button-clear {
-                background-color: #f44336;
-                color: white;
-            }
+
+/* Styling untuk tombol-tombol */
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.button-order {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-clear {
+    background-color: #f44336;
+    color: white;
+}
+
     
             /* Chart Container */
 #chart-container {
@@ -2390,3 +2394,23 @@ document.getElementById('menu-link2').addEventListener('click', function(event) 
 </div>
 
     </body>
+
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="logo">
+            <img src="img/logo.png" alt="Monsieur Spoon Logo">
+          </div>
+          <div class="footer-links">
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Monsieur Spoon. All rights reserved.</p>
+        </div>
+      </footer>
+      
