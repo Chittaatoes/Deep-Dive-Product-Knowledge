@@ -61,30 +61,36 @@
             }
     
             /* Search box styling */
-            .search-box {
-                position: fixed;
-                top: 70px; /* Adjusted to be below the header */
-                right: 20px; /* Positioned to the right */
-                width: 90%; /* Takes up most of the width on mobile */
-                max-width: 300px; /* Limits width on larger screens */
-                z-index: 1000;
-                display: none; /* Hidden by default */
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                background-color: #fff;
-                border-radius: 8px;
-            }
-    
-            .search-box input {
-                width: 100%;
-                padding: 10px;
-                font-size: 16px;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-            }
+            /* Search Box */
+.search-box {
+    position: fixed;
+    top: 20px; /* Sesuaikan dengan kebutuhan */
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    width: 300px; /* Sesuaikan dengan kebutuhan */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+}
 
-            .search-box.active {
-                display: block; /* Make it visible when active */
-            }
+.search-box input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px;
+}
+
+.clear-search {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    margin-left: 10px;
+}
     
             /* Button styling */
             .button {
@@ -256,6 +262,7 @@
      <!-- Search Box -->
      <div id="searchBox" class="search-box">
         <input type="text" id="search-input" placeholder="Search menu..." onkeyup="searchMenu()">
+        <button id="clear-search" class="clear-search">&times;</button>
     </div>
 
     <!-- Tambahkan ini di dalam <body> -->
@@ -265,34 +272,29 @@
         
         <style>
             /* Floating Search Button */
-            .floating-search-button {
-                position: fixed;
-                bottom: 210px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                background-color: #f7f7f71f; /* Warna latar belakang tombol */
-                border-radius: 50%;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-                z-index: 1000;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                touch-action: none; /* Menonaktifkan gesekan default pada layar sentuh */
-            }
-        
-            .floating-search-button img {
-                width: 70%;
-                height: 70%;
-            }
+.floating-search-button {
+    position: fixed;
+    bottom: 210px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #f7f7f71f; /* Warna latar belakang tombol */
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    touch-action: none; /* Menonaktifkan gesekan default pada layar sentuh */
+}
+
+.floating-search-button img {
+    width: 70%;
+    height: 70%;
+}
         </style>
     
-
-        <!-- Kotak Pencarian -->
-        <div class="search-box" id="search-box">
-            <input type="text" id="search-input" placeholder="Cari menu..." onkeyup="searchMenu()">
-        </div>
 
         <div class="kategori-header">
             <h2>Pilih Kategori Menu</h2>
@@ -1012,7 +1014,7 @@
     <div class="menu-categories">
         <div class="category-item" data-category="mains entree beef rich blackpaper" onclick="handleClick('Australian Rib-eye Steak')">
             <a href="#" class="no-link">
-                <img src="img/mains/Australian Rib-eye Steak.jpg" alt="Australian Rib-eye Steak">
+                <img src="img/mains/Australian.jpg" alt="Australian Rib-eye Steak">
                 <div class="category-info">
                     <h3>Australian Rib-eye Steak 250gr| 299</h3>
                     <p>Served with grilled vegetables, cherry tomatoes, cauliflower, romaine lettuce, black truffle butter and black pepper sauce.</p>
@@ -1104,7 +1106,7 @@
                     <img src="img/rice/chickenmedallion.jpg" alt="Chicken Medallion">
                     <div class="category-info">
                         <h3>Chicken Medallion | 125</h3>
-                        <p>Chicken medallion in a balsamic reduction sauce served with basmati rice. </p>
+                        <p>Chicken medallion in a balsamic reduction sauce served with basmati rice (Manis, asam & rich flavor). </p>
                     </div>
                 </a>
             </div>
@@ -1796,6 +1798,30 @@
     <!-- JavaScript -->
     <script>
 
+document.addEventListener('DOMContentLoaded', function() {
+    const clearSearchButton = document.getElementById('clear-search');
+    const searchInput = document.getElementById('search-input');
+
+    // Event listener untuk tombol "x"
+    clearSearchButton.addEventListener('click', function() {
+        searchInput.value = ''; // Hapus teks di input search
+        searchInput.focus(); // Fokuskan input search jika diperlukan
+        searchMenu(); // Panggil fungsi pencarian untuk menyembunyikan item jika diperlukan
+    });
+
+    // Toggle search box visibility
+    window.toggleSearchBox = function() {
+        const searchBox = document.getElementById('searchBox');
+        if (searchBox.style.display === 'none' || !searchBox.style.display) {
+            searchBox.style.display = 'flex'; // Menampilkan search box
+            searchInput.focus(); // Fokus pada input search
+        } else {
+            searchBox.style.display = 'none'; // Menyembunyikan search box
+        }
+    };
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
         const scrollToTopBtn = document.getElementById('scroll-to-top');
 
@@ -2029,18 +2055,22 @@ function decreaseQuantity(menuName) {
 }
 
 async function sendOrder() {
+    // Prompt untuk nomor meja
+    const tableNumber = prompt('Masukkan nomor meja:') || 'null'; // Jika tidak diisi, gunakan 'null'
+
     const orderItems = Object.entries(chart).map(([menuName, value]) => {
         const quantity = typeof value === 'object' ? value.quantity : value;
         const doneness = typeof value === 'object' ? ` (${value.doneness})` : '';
         return quantity > 1 ? `${menuName}${doneness} x${quantity}` : `${menuName}${doneness}`;
     });
+
     const specialRequest = document.getElementById('special-request').value.trim();
-    const orderMessage = `Your Order: ${orderItems.join(', ')}${specialRequest ? ' - Special Request / addons: ' + specialRequest : ''}`;
+    const orderMessage = `Nomor Meja: ${tableNumber}\nPesanan: ${orderItems.join(', ')}${specialRequest ? ' - Permintaan Khusus / tambahan: ' + specialRequest : ''}`;
 
     // Copy the order message to the clipboard
     try {
         await navigator.clipboard.writeText(orderMessage);
-        alert('Order telah disalin ke clipboard. Mengarahkan ke WhatsApp...');
+        alert('Pesanan telah disalin ke clipboard. Mengarahkan ke WhatsApp...');
         
         // Redirect to WhatsApp with the message
         const encodedMessage = encodeURIComponent(orderMessage);
@@ -2049,6 +2079,7 @@ async function sendOrder() {
         alert('Gagal menyalin ke clipboard. Silakan coba lagi.');
     }
 }
+
 
 window.addEventListener('beforeunload', function (e) {
     if (Object.keys(chart).length > 0) {
