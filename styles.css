@@ -862,7 +862,7 @@ body {
 
 #special-request:focus {
   height: auto;
-  min-height: 100px; /* Tinggi minimum textarea saat fokus */
+  min-height: 300px; /* Tinggi minimum textarea saat fokus */
   max-height: none; /* Membiarkan textarea untuk terus bertambah tinggi */
 }
 
