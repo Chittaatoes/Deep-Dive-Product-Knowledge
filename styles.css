@@ -754,7 +754,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek 3D dengan bayangan */
   max-width: 400px;
-  margin: 20px auto;
+  margin-left: 30px;  /* Jarak kiri dari container */
+  margin-right: 30px; /* Jarak kanan dari container */
   transition: transform 0.3s ease;
 }
 
@@ -762,7 +763,7 @@ body {
 @media (max-width: 767px) {
   #chart-container {
       padding: 50px; /* Padding lebih kecil di tampilan mobile */
-      margin: 30 30px; /* Margin di kiri dan kanan untuk tampilan mobile */
+      margin: 50 50px; /* Margin di kiri dan kanan untuk tampilan mobile */
       /* Atur lebar maksimum jika diperlukan */
       max-width: calc(100% - 50px); /* Kurangi lebar maksimum dengan padding */
   }
