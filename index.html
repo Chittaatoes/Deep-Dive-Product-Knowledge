@@ -2051,6 +2051,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function () {
     const scrollToTopBtn = document.getElementById('scroll-to-top');
+    const chatMenu = document.querySelector('.footer .chat');
 
     window.addEventListener('scroll', function () {
         if (window.scrollY > 300) { // Tampilkan tombol jika scroll lebih dari 300px
@@ -2063,7 +2064,16 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollToTopBtn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas secara halus
     });
+
+    chatMenu.addEventListener('click', function (event) {
+        event.preventDefault(); // Mencegah perilaku default klik
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Scroll ke atas secara halus
+        });
+    });
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
