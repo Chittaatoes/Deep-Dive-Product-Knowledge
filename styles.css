@@ -54,7 +54,7 @@ body {
 /* Popup Notifikasi Styles */
 .notification-popup {
   position: fixed;
-  bottom: 20px;
+  bottom: 70px;
   left: 20px;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -933,13 +933,13 @@ body {
 
 /* Position the scroll-to-top button */
 #scroll-to-top {
-  bottom: 80px; /* Position above the bottom of the page */
+  bottom: 130px; /* Position above the bottom of the page */
   right: 20px;  /* Position to the right of the page */
 }
 
 /* Position the scroll-to-bottom button */
 #scroll-to-bottom {
-  bottom: 20px; /* Position at the bottom of the page */
+  bottom: 70px; /* Position at the bottom of the page */
   right: 20px;  /* Position to the right of the page */
 }
 
