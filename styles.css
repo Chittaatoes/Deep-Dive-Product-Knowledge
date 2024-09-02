@@ -5,6 +5,11 @@
   box-sizing: border-box; /* Pastikan padding dan border diperhitungkan dalam lebar dan tinggi elemen */
 }
 
+.content {
+  margin-bottom: 80px; /* Atur jarak bawah sesuai kebutuhan Anda */
+}
+
+
 /* Gaya Loading Screen */
 .loading-screen {
   position: fixed;
