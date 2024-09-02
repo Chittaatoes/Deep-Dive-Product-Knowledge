@@ -221,6 +221,77 @@
                     padding: 10px;
                 }
             }
+            .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            border-top: 1px solid #e0e0e0;
+            z-index: 1000;
+        }
+
+        .footer a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            color: #555; /* Dark grey text color */
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer a.active i {
+            filter: invert(36%) sepia(72%) saturate(509%) hue-rotate(331deg) brightness(93%) contrast(90%);
+        }
+
+        .footer a span {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+        }
+
+        .footer a i {
+            font-size: 22px;
+            filter: grayscale(100%); /* Default icon color (gray) */
+            transition: filter 0.3s ease;
+        }
+
+        /* Icons specific styles */
+        .footer a.home i {
+            background: url('img/footer/home-icon.png') no-repeat center;
+            background-size: contain;
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+        }
+
+        .footer a.promo i {
+            background: url('img/footer/promo.png') no-repeat center;
+            background-size: contain;
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+        }
+
+        .footer a.aktivitas i {
+            background: url('img/footer/activity.png') no-repeat center;
+            background-size: contain;
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+        }
+
+        .footer a.chat i {
+            background: url('img/footer/chat.png') no-repeat center;
+            background-size: contain;
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+        }
         </style>
     </head>
     
@@ -278,7 +349,7 @@
             /* Floating Search Button */
 .floating-search-button {
     position: fixed;
-    bottom: 210px;
+    bottom: 220px;
     right: 20px;
     width: 50px;
     height: 50px;
@@ -2396,24 +2467,23 @@ document.getElementById('menu-link2').addEventListener('click', function(event) 
     <img src="img/down-arrow.png" alt="Scroll to Bottom">
 </div>
 
-    </body>
+<div class="footer">
+    <a href="#" class="home active">
+        <i></i>
+        <span>Beranda</span>
+    </a>
+    <a href="#" class="promo">
+        <i></i>
+        <span>Promo</span>
+    </a>
+    <a href="#" class="aktivitas">
+        <i></i>
+        <span>Aktivitas</span>
+    </a>
+    <a href="#" class="chat">
+        <i></i>
+        <span>Chat</span>
+    </a>
+</div>
 
-    <footer class="footer">
-        <div class="footer-content">
-          <div class="logo">
-            <img src="img/logo.png" alt="Monsieur Spoon Logo">
-          </div>
-          <div class="footer-links">
-            <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 Monsieur Spoon. All rights reserved.</p>
-        </div>
-      </footer>
-      
+    </body>
