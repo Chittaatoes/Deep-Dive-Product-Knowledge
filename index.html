@@ -2000,16 +2000,18 @@
                 </div>
 
                 <!-- Chart Section -->
-                <div id="chart-container">
-                    <h2>Order Request</h2>
-                    <ul id="chart-list"></ul>
-                    <textarea id="special-request" placeholder="Input special request here..."></textarea>
-                    <button id="clear-special-request" style="height: 35px; text-align: center; align-items: right; background-color: #f44336;">Clear Addons</button>
-                    <div class="button-container">
-                        <button class="button button-order" onclick="sendOrder()">Order</button>
-                        <button class="button button-clear" onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
+                 <div class="content">
+                    <div id="chart-container">
+                        <h2>Order Request</h2>
+                        <ul id="chart-list"></ul>
+                        <textarea id="special-request" placeholder="Input special request here..."></textarea>
+                        <button id="clear-special-request" style="height: 35px; text-align: center; align-items: right; background-color: #f44336;">Clear Addons</button>
+                        <div class="button-container">
+                            <button class="button button-order" onclick="sendOrder()">Order</button>
+                            <button class="button button-clear" onclick="clearChart()">Clear</button> <!-- Tombol Clear -->
+                        </div>
                     </div>
-                </div>
+                 </div>
 
                 <audio id="ting-sound" src="ting.mp3" preload="auto"></audio>
 
