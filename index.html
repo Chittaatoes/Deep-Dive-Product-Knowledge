@@ -2479,6 +2479,18 @@ document.getElementById('menu-link2').addEventListener('click', function(event) 
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const activityLink = document.getElementById('activity-link');
+
+    activityLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Redirect to WhatsApp
+        window.location.href = 'https://wa.me/6285172352402?';
+    });
+});
+
+
     </script>
 
 <!-- Button to scroll to the top -->
@@ -2500,10 +2512,10 @@ document.getElementById('menu-link2').addEventListener('click', function(event) 
         <i></i>
         <span>Promo</span>
     </a>
-    <a href="#" class="aktivitas">
+    <a href="#" id="activity-link" class="aktivitas">
         <i></i>
         <span>Aktivitas</span>
-    </a>
+    </a>    
     <a href="#" class="chat">
         <i></i>
         <span>Menu</span>
