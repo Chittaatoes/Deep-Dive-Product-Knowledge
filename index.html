@@ -2050,6 +2050,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const homeButton = document.querySelector('.footer .home');
+
+    homeButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Mencegah perilaku default klik
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Scroll ke atas secara halus
+        });
+    });
+});
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const scrollToTopBtn = document.getElementById('scroll-to-top');
