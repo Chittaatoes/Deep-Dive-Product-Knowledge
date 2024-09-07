@@ -6,6 +6,51 @@
     <title>Informasi Promo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Ensure header and elements are responsive */
+        .site-header {
+                background-color: #fff;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                position: sticky; /* Keeps header at the top */
+                top: 0;
+                z-index: 1000;
+            }
+    
+            .logo img {
+                height: 40px;
+            }
+    
+            .main-nav ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+            }
+    
+            .main-nav li {
+                margin: 0 15px;
+            }
+    
+            .main-nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                padding: 5px;
+            }
+    
+            .header-right a {
+                display: flex;
+                align-items: center;
+            }
+    
+            .header-right img {
+                height: 24px;
+            }
         .footer {
             position: fixed;
             bottom: 0;
@@ -80,48 +125,71 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#promos">Promos</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>Promo Informasi</h1>
-    </header>
+
+<!-- Konten utama halaman -->
+<div id="main-content" style="display: none;">
+    <!-- Konten halaman Anda di sini -->
+</div>
+
+        <header class="site-header">
+            <div class="logo">
+                <a href="#">
+                    <img src="img/logo.png" id="menu-link1" alt="Monsier Spoon">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" id="menu-link2">MENU</a></li>
+                </ul>
+            </nav>
+            <!-- Konten header lainnya -->
+        </header>
 
     <main>
-        <section id="home">
+<!--         <section id="home">
             <h2>Welcome</h2>
             <p>Welcome to our promotions page! Check out the latest deals and offers.</p>
-        </section>
-
+        </section> -->
 
         <div class="content">
             <section id="promos">
-                <h2>Latest Promotions</h2>
+                <h2>Promo Bank</h2>
+
                 <div class="promo-card">
-                    <img src="img/breakfast/breakfast.jpg" alt="Promo 1">
-                    <h3>Promo Breakfast</h3>
-                    <p>Description of the first promotion.</p>
-                </div>
-                <div class="promo-card">
-                    <img src="img/breakfast/breakfast.jpg" alt="Promo 2">
-                    <h3>Promo BCA</h3>
-                    <p>Description of the second promotion.</p>
+                    <h3>CIMB Niaga</h3>
+                    <p>Diskon 20% dengan minimal pembelanjaan Rp400.000, maksimal diskon Rp150.000. Berlaku setiap Sabtu dan Minggu.</p>
                 </div>
 
-                <h2>Senin - Kamis</h2>
                 <div class="promo-card">
-                    <img src="img/breakfast/breakfast.jpg" alt="Promo 1">
-                    <h3>OCBC & BCA</h3>
-                    <p>Description of the first promotion.</p>
+                    <h3>Bank BCA</h3>
+                    <p>Diskon 20% dengan minimal belanja Rp350.000, maksimal diskon Rp75.000. Berlaku Senin hingga Kamis untuk semua kartu kredit BCA.</p>
                 </div>
-                <!-- Add more promo cards as needed -->
+
+                <div class="promo-card">
+                    <h3>Promo Maybank</h3>
+                    <p>Diskon 50% dengan minimal transaksi Rp500.000, maksimal diskon Rp300.000. Berlaku untuk kartu contactless dan kartu kredit Visa.</p>
+                    <p>Diskon 15% dengan minimal transaksi Rp500.000, maksimal diskon Rp150.000 untuk Mastercard DCB. Tidak berlaku untuk kartu corporate dan kartu kredit Visa.</p>
+                    <p>Berlaku setiap hari.</p>
+                </div>
+
+                <h2>Promo Grab</h2>
+                <div class="promo-card">
+                    <h3>Promo Grab Voucher</h3>
+                    <p>Voucher diskon Rp100.000 atau Rp200.000 setiap hari.</p>
+                </div>
+
+                <div class="promo-card">
+                    <h3>Promo Grab Combo</h3>
+                    <p>Dapatkan diskon untuk Coklat atau Pistachio setiap Sabtu dan Minggu.</p>
+                </div>
+
+                <div class="promo-card">
+                    <h3>Promo Voucher Champ</h3>
+                    <p>Voucher diskon Rp100.000 setiap hari.</p>
+                </div>
             </section>
         </div>
-        
+    </main>    
 
     <script src="scripts.js"></script>
 
