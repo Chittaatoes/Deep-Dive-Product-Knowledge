@@ -260,48 +260,6 @@
             transition: filter 0.3s ease;
         }
 
-        .qr-circle {
-  position: relative;
-  top: -20px;
-  width: 70px;
-  height: 70px;
-  background-color: #f1f1f1;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.qr-circle a {
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.qr-circle a i {
-  background: url('img/footer/qr.png') no-repeat center;
-  background-size: contain;
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-}
-
-.qr-circle a span {
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-/* Icons specific styles for other items */
-.footer a.home i, .footer a.promo i, .footer a.aktivitas i, .footer a.chat i {
-  background-size: contain;
-  width: 22px;
-  height: 22px;
-  display: inline-block;
-}
-
         /* Icons specific styles */
         .footer a.home i {
             background: url('img/footer/home-icon.png') no-repeat center;
@@ -2275,41 +2233,9 @@
 
                 <audio id="ting-sound" src="ting.mp3" preload="auto"></audio>
 
-                <div class="footer">
-                    <a href="#" class="home active">
-                      <i></i>
-                      <span>Beranda</span>
-                    </a>
-                    <a href="promo.html" class="promo">
-                      <i></i>
-                      <span>Promo</span>
-                    </a>
-                    <div class="qr-circle">
-                      <a href="#" class="qr">
-                        <i></i>
-                        <span></span>
-                      </a>
-                    </div>
-                    <a href="#" id="activity-link" class="aktivitas">
-                      <i></i>
-                      <span>Aktivitas</span>
-                    </a>    
-                    <a href="#" class="chat">
-                      <i></i>
-                      <span>Menu</span>
-                    </a>
-                  </div>
-                
-                  <!-- QR Scan Modal (Hidden by Default) -->
-                <div id="qr-scan-modal" style="display: none;">
-                    <video id="preview"></video>
-                  </div>
-
 
 
     <!-- JavaScript -->
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-
     <script>
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -2782,41 +2708,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-let scanner;
-
-function startScan() {
-  // Show the QR scan modal
-  document.getElementById('qr-scan-modal').style.display = 'flex';
-
-  // Initialize the scanner
-  scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-  scanner.addListener('scan', function (content) {
-    alert('QR Code Content: ' + content); // Display the scanned content
-    stopScan(); // Stop scanning after reading QR code
-  });
-
-  Instascan.Camera.getCameras().then(function (cameras) {
-    if (cameras.length > 0) {
-      scanner.start(cameras[0]); // Start camera for scanning
-    } else {
-      console.error('No cameras found.');
-    }
-  }).catch(function (e) {
-    console.error(e);
-  });
-}
-
-function stopScan() {
-  // Hide the QR scan modal
-  document.getElementById('qr-scan-modal').style.display = 'none';
-
-  // Stop the scanner
-  if (scanner) {
-    scanner.stop();
-  }
-}
-
-
 
     </script>
 
@@ -2829,6 +2720,24 @@ function stopScan() {
 <div id="scroll-to-bottom" class="scroll-button">
     <img src="img/down-arrow.png" alt="Scroll to Bottom">
 </div>
-  
+
+<div class="footer">
+    <a href="#" class="home active">
+        <i></i>
+        <span>Beranda</span>
+    </a>
+    <a href="promo.html" class="promo">
+        <i></i>
+        <span>Promo</span>
+    </a>
+    <a href="#" id="activity-link" class="aktivitas">
+        <i></i>
+        <span>Aktivitas</span>
+    </a>    
+    <a href="#" class="chat">
+        <i></i>
+        <span>Menu</span>
+    </a>
+</div>
 
     </body>
