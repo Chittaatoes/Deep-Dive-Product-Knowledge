@@ -721,6 +721,12 @@ body {
     transition: transform 0.3s ease;
 }
 
+.category-item img.black-and-white {
+  filter: grayscale(100%); /* Mengubah gambar menjadi hitam-putih */
+  transition: filter 0.3s; /* Transisi untuk efek halus */
+}
+
+
 .category-info {
     position: absolute;
     bottom: 0;
