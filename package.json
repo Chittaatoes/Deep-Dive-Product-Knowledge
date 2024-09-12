@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "html5-qrcode": "^2.3.8"
+  },
+  "name": "ddpk-8-25",
+  "version": "1.0.0",
+  "main": "html5-qrcode.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
