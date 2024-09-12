@@ -234,6 +234,9 @@ function showSoldOut(element) {
             soldOutElement.classList.add('show', 'pulse');
         }, 10); // Delay kecil untuk memastikan transisi diterapkan
 
+        // Tambahkan kelas latar belakang "sold out"
+        parentCategory.classList.add('sold-out-background');
+
         // Event listeners for long press on desktop
         let pressTimer;
         soldOutElement.addEventListener('mousedown', () => {
@@ -268,15 +271,18 @@ function showSoldOut(element) {
 }
 
 function removeSoldOut(soldOutElement) {
-    const parentCategory = soldOutElement.closest('.menu-categories');
     if (soldOutElement) {
-        soldOutElement.classList.remove('show', 'pulse');
+        soldOutElement.classList.add('remove');
+        const parentCategory = soldOutElement.closest('.menu-categories');
         setTimeout(() => {
             soldOutElement.remove();
-        }, 150); // Waktu untuk menghapus elemen setelah animasi keluar selesai
+            // Kembalikan latar belakang ke keadaan semula
+            parentCategory.classList.remove('sold-out-background');
+        }, 500); // Waktu untuk menghapus elemen setelah animasi keluar selesai
     }
-    // Optional: Enable ordering for the menu again
 }
+
+
 
 
 function addToChart(menuName, element) {
