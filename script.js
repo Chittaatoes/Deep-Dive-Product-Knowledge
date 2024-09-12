@@ -1,3 +1,92 @@
+// Simpan status chart ke Local Storage
+function saveChartState() {
+    localStorage.setItem('chartState', JSON.stringify(chart));
+}
+
+// Simpan status sold out ke Local Storage
+function saveSoldOutState() {
+    const soldOutItems = Array.from(document.querySelectorAll('.sold-out-message')).map(item => {
+        const menuName = item.previousElementSibling.querySelector('.category-info h3').innerText;
+        return menuName;
+    });
+    localStorage.setItem('soldOutState', JSON.stringify(soldOutItems));
+}
+
+// Simpan teks area ke Local Storage
+function saveTextAreaState() {
+    const content = document.getElementById('content').value;
+    localStorage.setItem('textAreaState', content);
+}
+
+// Panggil fungsi simpan sebelum halaman ditinggal
+window.onbeforeunload = function () {
+    saveChartState();
+    saveSoldOutState();
+    saveTextAreaState();
+};
+
+// Muat status chart dari Local Storage
+function loadChartState() {
+    const savedChart = localStorage.getItem('chartState');
+    if (savedChart) {
+        Object.assign(chart, JSON.parse(savedChart));
+        displayChart();
+    }
+}
+
+// Muat status sold out dari Local Storage
+function loadSoldOutState() {
+    const savedSoldOutItems = localStorage.getItem('soldOutState');
+    if (savedSoldOutItems) {
+        const soldOutItems = JSON.parse(savedSoldOutItems);
+        soldOutItems.forEach(menuName => {
+            const items = document.querySelectorAll('.menu-categories');
+            items.forEach(item => {
+                const categoryInfo = item.querySelector('.category-info h3');
+                if (categoryInfo && categoryInfo.innerText === menuName) {
+                    showSoldOut(categoryInfo.closest('.category-item'));
+                }
+            });
+        });
+    }
+}
+
+// Muat teks area dari Local Storage
+function loadTextAreaState() {
+    const savedContent = localStorage.getItem('textAreaState');
+    if (savedContent) {
+        document.getElementById('content').value = savedContent;
+    }
+}
+
+
+// Memuat status halaman ketika dokumen siap
+window.onload = function () {
+    loadState();
+};
+
+// Menyimpan status setiap perubahan dilakukan
+window.onbeforeunload = function () {
+    saveState();
+};
+
+// Panggil fungsi muat saat halaman dimuat
+window.onload = function () {
+    loadChartState();
+    loadSoldOutState();
+    loadTextAreaState();
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load states on page load
+    loadChartState();
+    loadSoldOutState();
+    loadTextAreaState();
+
+    // Existing event listeners...
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const clearSearchButton = document.getElementById('clear-search');
     const searchInput = document.getElementById('search-input');
