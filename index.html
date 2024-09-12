@@ -7,13 +7,14 @@
     <title>DPK Login</title>
     <style>
         body {
-            background-color: #f39362;
+            background-color: #f19262;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            overflow: hidden; /* Hilangkan scroll */
         }
 
         .login-container {
@@ -24,6 +25,7 @@
             width: 90%;
             max-width: 320px;
             box-shadow: 0 0 30px rgba(8, 0, 0, 0.664);
+            box-sizing: border-box; /* Pastikan padding tidak melebihi ukuran */
         }
 
         h2 {
