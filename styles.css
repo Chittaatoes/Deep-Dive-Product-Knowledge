@@ -1074,6 +1074,24 @@ body {
   font-size: 14px;
 }
 
+.footer a.qr-reader {
+  color: #007bff;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.footer a.qr-reader i {
+  background-image: url('img/footer/qr.png'); /* Replace with your QR icon */
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0 auto 5px;
+}
+
+
 /* CSS untuk menonaktifkan seleksi teks */
 .sold-out-message {
   user-select: none; /* Menonaktifkan seleksi teks */
