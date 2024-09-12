@@ -234,12 +234,12 @@ function showSoldOut(element) {
             soldOutElement.classList.add('show', 'pulse');
         }, 10); // Delay kecil untuk memastikan transisi diterapkan
 
-        // Event listeners for long press
+        // Event listeners for long press on desktop
         let pressTimer;
         soldOutElement.addEventListener('mousedown', () => {
             pressTimer = setTimeout(() => {
                 removeSoldOut(soldOutElement);
-            }, 3000); // 3 seconds long press
+            }, 1500); // 1.5 seconds long press
         });
 
         soldOutElement.addEventListener('mouseup', () => {
@@ -249,9 +249,23 @@ function showSoldOut(element) {
         soldOutElement.addEventListener('mouseleave', () => {
             clearTimeout(pressTimer);
         });
+
+        // Event listeners for long press on mobile
+        soldOutElement.addEventListener('touchstart', () => {
+            pressTimer = setTimeout(() => {
+                removeSoldOut(soldOutElement);
+            }, 1500); // 1.5 seconds long press
+        });
+
+        soldOutElement.addEventListener('touchend', () => {
+            clearTimeout(pressTimer);
+        });
+
+        soldOutElement.addEventListener('touchcancel', () => {
+            clearTimeout(pressTimer);
+        });
     }
 }
-
 
 function removeSoldOut(soldOutElement) {
     const parentCategory = soldOutElement.closest('.menu-categories');
@@ -263,6 +277,7 @@ function removeSoldOut(soldOutElement) {
     }
     // Optional: Enable ordering for the menu again
 }
+
 
 function addToChart(menuName, element) {
     const parentCategory = element.closest('.menu-categories');
