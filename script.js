@@ -1,3 +1,31 @@
+// Simpan state chart secara otomatis saat ada perubahan
+const chartContainer = document.getElementById('chart-container');
+if (chartContainer) {
+    chartContainer.addEventListener('DOMSubtreeModified', saveChartState);
+}
+
+// Simpan state textarea secara otomatis saat ada perubahan
+const textArea = document.getElementById('content');
+if (textArea) {
+    textArea.addEventListener('input', saveTextAreaState);
+}
+
+// Simpan state sold-out secara otomatis saat ada perubahan pada elemen terkait (bisa disesuaikan)
+document.body.addEventListener('click', function(event) {
+    if (event.target.matches('.sold-out-toggle')) { // Misalnya class untuk tombol toggle sold-out
+        saveSoldOutState();
+    }
+});
+
+// Fungsi untuk menandai menu sebagai "sold out"
+function showSoldOut(menuItem) {
+    const soldOutMessage = menuItem.querySelector('.sold-out-message');
+    if (soldOutMessage) {
+        soldOutMessage.style.display = 'block'; // Tampilkan pesan "sold out"
+    }
+}
+
+
 // Simpan status chart ke Local Storage
 function saveChartState() {
     localStorage.setItem('chartState', JSON.stringify(chart));
@@ -70,19 +98,29 @@ window.onbeforeunload = function () {
     saveState();
 };
 
-// Panggil fungsi muat saat halaman dimuat
-window.onload = function () {
-    loadChartState();
-    loadSoldOutState();
-    loadTextAreaState();
-};
-
 document.addEventListener('DOMContentLoaded', function() {
     // Load states on page load
     loadChartState();
     loadSoldOutState();
     loadTextAreaState();
 
+
+     // Tambahkan event listener untuk perubahan
+     const chartContainer = document.getElementById('chart-container');
+     if (chartContainer) {
+         chartContainer.addEventListener('DOMSubtreeModified', saveChartState);
+     }
+ 
+     const textArea = document.getElementById('content');
+     if (textArea) {
+         textArea.addEventListener('input', saveTextAreaState);
+     }
+ 
+     document.body.addEventListener('click', function(event) {
+         if (event.target.matches('.sold-out-toggle')) { // Misalnya class untuk tombol toggle sold-out
+             saveSoldOutState();
+         }
+     });
     // Existing event listeners...
 });
 
@@ -501,7 +539,7 @@ async function sendOrder() {
     });
 
     const specialRequest = document.getElementById('special-request').value.trim();
-    const orderMessage = `TABLE: ${tableNumber}\nPesanan: ${orderItems.join(', ')}${specialRequest ? ' - Permintaan Khusus / tambahan: ' + specialRequest : ''}`;
+    const orderMessage = `TABLE: ${tableNumber}\nPesanan: ${orderItems.join(', ')}${specialRequest ? ' - Request: ' + specialRequest : ''}`;
 
     // Copy the order message to the clipboard
     try {
