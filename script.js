@@ -258,7 +258,7 @@ function removeSoldOut(soldOutElement) {
         soldOutElement.classList.remove('show', 'pulse');
         setTimeout(() => {
             soldOutElement.remove();
-        }, 300); // Waktu untuk menghapus elemen setelah animasi keluar selesai
+        }, 150); // Waktu untuk menghapus elemen setelah animasi keluar selesai
     }
     // Optional: Enable ordering for the menu again
 }
