@@ -252,6 +252,7 @@ function showSoldOut(element) {
     }
 }
 
+
 function removeSoldOut(soldOutElement) {
     const parentCategory = soldOutElement.closest('.menu-categories');
     if (soldOutElement) {
