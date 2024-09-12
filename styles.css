@@ -1073,3 +1073,11 @@ body {
   color: #6c757d;
   font-size: 14px;
 }
+
+/* CSS untuk menonaktifkan seleksi teks */
+.sold-out-message {
+  user-select: none; /* Menonaktifkan seleksi teks */
+  -webkit-user-select: none; /* Untuk browser berbasis WebKit (Chrome, Safari) */
+  -moz-user-select: none; /* Untuk Firefox */
+  -ms-user-select: none; /* Untuk Internet Explorer/Edge */
+}
