@@ -1150,3 +1150,6 @@ body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+.pad {
+  padding-bottom: 30px;
+}
