@@ -410,7 +410,8 @@ function removeSoldOut(soldOutElement) {
 }
 
 
-
+// Daftar menu yang memerlukan opsi suhu (Hot / Iced)
+const menusWithTemperatureOptions = ['Cafe Long Black', 'Cafe Cappuccino', 'Cafe Oat Cappucino', 'Cafe Mocha', 'Cafe Latte', 'Vanilla Latte', 'Caramel latte', 'Hazelnut Latte', 'Creme brulee latte', 'Oat Latte', 'Pistachio Cookie Coffe Latte', 'Indulgent Chocolate', 'Indulgent Chocolate With Oat Milk', 'Fluffy Marshmallow Chocolate', 'Chocolate Crumble Latte']; // Tambahkan menu lainnya jika diperlukan
 
 function addToChart(menuName, element) {
     const parentCategory = element.closest('.menu-categories');
@@ -420,6 +421,17 @@ function addToChart(menuName, element) {
     if (soldOutElement) {
         showNotification(menuName, 'error');
         return; // Jangan tambahkan ke chart jika sold out
+    }
+
+    // Periksa apakah menu memerlukan opsi suhu sebelum ditambahkan ke chart
+    if (menusWithTemperatureOptions.includes(menuName)) {
+        let temperature = prompt('Variant: Hot atau Iced.');
+        if (!temperature || (temperature.toLowerCase() !== 'hot' && temperature.toLowerCase() !== 'iced')) {
+            alert('Silakan pilih antara "Hot" atau "Iced".'); // Validasi input suhu
+            return; // Kembali jika input tidak valid
+        }
+        // Format nama menu berdasarkan pilihan suhu
+        menuName = `${temperature.charAt(0).toUpperCase() + temperature.slice(1).toLowerCase()} ${menuName}`;
     }
 
     // Jika tidak sold out, tambahkan ke chart
@@ -437,9 +449,10 @@ function addToChart(menuName, element) {
         }
     }
 
-    // Mainkan suara
+    // Mainkan suara setelah menambahkan ke chart
     playSound();
 }
+
 
 function showNotification(menuName, type) {
     const notification = document.createElement('div');
@@ -715,3 +728,75 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'https://wa.me/6285172352402?';
     });
 });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const qrScannerModal = document.getElementById('qr-scanner-modal');
+        const qrScannerElement = document.getElementById('qr-scanner');
+        const closeQrScannerButton = document.getElementById('close-qr-scanner');
+        const openQrScannerButton = document.getElementById('open-qr-scanner');
+        
+        let html5QrcodeScanner;
+
+        function startScanning() {
+            qrScannerModal.style.display = 'block';
+
+            html5QrcodeScanner = new Html5QrcodeScanner(
+                "qr-scanner",
+                { fps: 10, qrbox: 250 },
+                false
+            );
+
+            html5QrcodeScanner.render(onScanSuccess, onScanError);
+        }
+
+        function onScanSuccess(qrCodeMessage) {
+            alert('QR Code detected: ' + qrCodeMessage);
+            stopScanning();
+        }
+
+        function onScanError(errorMessage) {
+            console.error('QR Code scan error: ', errorMessage);
+        }
+
+        function stopScanning() {
+            html5QrcodeScanner.clear();
+            qrScannerModal.style.display = 'none';
+        }
+
+        openQrScannerButton.addEventListener('click', startScanning);
+        closeQrScannerButton.addEventListener('click', stopScanning);
+    });
+
+const scanner = new Html5QrcodeScanner('reader', { 
+        // Scanner will be initialized in DOM inside element with id of 'reader'
+        qrbox: {
+            width: 250,
+            height: 250,
+        },  // Sets dimensions of scanning box (set relative to reader element width)
+        fps: 20, // Frames per second to attempt a scan
+    });
+
+
+    scanner.render(success, error);
+    // Starts scanner
+
+    function success(result) {
+
+        document.getElementById('result').innerHTML = `
+        <h2>Success!</h2>
+        <p><a href="${result}">${result}</a></p>
+        `;
+        // Prints result as a link inside result element
+
+        scanner.clear();
+        // Clears scanning instance
+
+        document.getElementById('reader').remove();
+        // Removes reader element from DOM since no longer needed
+    
+    }
+
+    function error(err) {
+        console.error(err);
+        // Prints any errors to the console
+    }
