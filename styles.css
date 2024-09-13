@@ -552,14 +552,13 @@ body {
   justify-content: center; /* Menempatkan elemen di tengah secara horizontal */
   align-items: center; /* Menempatkan elemen di tengah secara vertikal */
   height: 50px; /* Mengatur tinggi container agar memenuhi seluruh tinggi viewport */
-  /* background-color: #b41616; */ /* Latar belakang container untuk kontras */
+  background-color: #F8F8F8; /* Latar belakang container untuk kontras */
 }
 
 /* Kategori Header */
 .kategori-header {
   text-align: center;
-  font-size: 20px;
-  margin-top: 40px;
+  font-size: 24px;
   font-weight: bold;
   color: #fff;
   position: relative;
@@ -598,9 +597,7 @@ body {
   opacity: 1; /* Membuat efek titik bergetar terlihat saat di-hover */
 }
 
-.pad {
-  padding-bottom: 50px;
-}
+
 
 /* Slider Container */
 .kategori-slider {
@@ -615,10 +612,9 @@ body {
 .slider-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Dua kolom dalam satu baris */
-  margin-top: 20px;
   gap: 8px; /* Jarak antara item */
   max-width: 1200px;
-/*   margin: 0 auto; */
+  margin: 0 auto;
   padding-bottom: 15px;
   transition: transform 0.3s ease-in-out;
 }
