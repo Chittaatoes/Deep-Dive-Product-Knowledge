@@ -549,6 +549,8 @@ body {
 /* Container untuk Menempatkan Header di Tengah Halaman */
 .container {
   display: flex;
+  padding-top: 40px;
+  padding-bottom: 25px;
   justify-content: center; /* Menempatkan elemen di tengah secara horizontal */
   align-items: center; /* Menempatkan elemen di tengah secara vertikal */
   height: 50px; /* Mengatur tinggi container agar memenuhi seluruh tinggi viewport */
@@ -558,7 +560,7 @@ body {
 /* Kategori Header */
 .kategori-header {
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #fff;
   position: relative;
