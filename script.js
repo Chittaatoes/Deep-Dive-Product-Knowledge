@@ -728,3 +728,61 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'https://wa.me/6285172352402?';
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Mendapatkan elemen dengan id 'promos'
+    const promoSection = document.getElementById("promos");
+
+    // Sembunyikan section promos saat halaman dimuat
+    promoSection.style.display = "none";
+
+    // Mendapatkan tombol promo dan home di footer
+    const promoButton = document.querySelector(".promo");
+    const homeButton = document.querySelector(".home");
+
+    // Fungsi untuk menampilkan section Promo dan scroll ke section ketika tombol promo ditekan
+    promoButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        promoSection.style.display = "block";  // Tampilkan section Promo
+        document.querySelector(".content").style.display = "block"; // Tetap tampilkan chart
+        
+        // Scroll ke section promos
+        promoSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Fungsi untuk menyembunyikan section Promo ketika tombol Beranda ditekan
+    homeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        promoSection.style.display = "none";  // Sembunyikan section Promo
+        document.querySelector(".content").style.display = "block"; // Tetap tampilkan chart
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab switching
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabName = button.getAttribute('data-tab');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            button.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        });
+    });
+
+    // Expandable promo cards
+    const promoCards = document.querySelectorAll('.expandable');
+
+    promoCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('expanded');
+            const icon = card.querySelector('.expand-icon');
+            icon.textContent = card.classList.contains('expanded') ? '-' : '+';
+        });
+    });
+});
