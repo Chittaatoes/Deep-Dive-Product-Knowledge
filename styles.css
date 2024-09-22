@@ -5,8 +5,31 @@
   box-sizing: border-box; /* Pastikan padding dan border diperhitungkan dalam lebar dan tinggi elemen */
 }
 
+/* Promo Card Styles */
 .content {
-  margin-bottom: 80px; /* Atur jarak bawah sesuai kebutuhan Anda */
+  padding: 20px;
+  padding-bottom: 70px;
+}
+
+.promo-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.promo-card p {
+  margin-bottom: 10px; /* Add some space between paragraphs */
+}
+
+/* Styling the validity */
+.validity {
+  font-weight: bold;
+  color: #333; /* You can also change the color if needed */
+  margin-top: 5px; /* Optional: add space above the validity */
 }
 
 
