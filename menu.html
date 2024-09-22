@@ -397,7 +397,7 @@
             <div class="kategori-item" data-target="mains">Mains</div>
             <div class="kategori-item" data-target="rice">Rice</div>
             <div class="kategori-item" data-target="deserts">Deserts</div>
-            <div class="kategori-item" data-target="viennoseries">Viennoseries</div>
+            <div class="kategori-item" data-target="viennoseries">Pastry</div>
             <div class="kategori-item" data-target="drinks">Drinks</div>
         </div>
     
@@ -405,25 +405,25 @@
         <!-- Menu Items -->
 
         <!-- Contoh Menu yang hanya sebagai tampilan -->
-    <div class="menu-category-header" id="breakfast">
+<!--     <div class="menu-category-header" id="breakfast">
         <h2>BREAKFAST PACKAGE</h2>
-    </div>
+    </div> -->
 
     <!-- Item yang hanya untuk tampilan -->
-    <div class="menu-categories">
+<!--     <div class="menu-categories">
         <div class="category-item" data-category="display">
             <a href="#" class="no-link">
                 <img src="img/display/breakfast.jpg" alt="Display Item 1">
                 <div class="category-info">
                     <h3>Beakfast Package</h3>
-                    <p>1 Menu + 1 Beverage (Hot Black tea / hot long black).</p>
+                    <p>1 Menu + 1 Beverage (Hot Black tea / hot long black).</p>
                 </div>
             </a>
         </div>
-    </div>
+    </div> -->
 
             <!-- Add more menu items similar to above structure -->
-            <div class="menu-categories">
+<!--             <div class="menu-categories">
                 <div class="category-item" data-category="breakfast best" onclick="handleClick('The OG Scrambled Egg', this)">
                     <a href="#" class="no-link">
                         <img src="img/breakfast/ogscrambledegg.jpg" alt="The OG Scrambled Egg">
@@ -455,7 +455,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
         
     <div class="menu-category-header" id="brunch">
         <h2>BRUNCH MENU</h2>
@@ -1232,7 +1232,7 @@
                         <p>Butter rice served with boneless chicken in creamy sauce and tarragon leaf.</p>
                     </div>
                 </a>
-            </div>
+            </div>  
         </div>  
         <!--Mykonos Meatball with Tzatziki | 120-->
         <div class="menu-categories">
@@ -1448,7 +1448,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- Strawberry Tartlette -->
+                <!-- Strawberry Tartelette -->
                 <div class="menu-categories">
                     <div class="category-item" data-category="deserts tartlet" onclick="handleClick('Strawberry Tartelette', this)">
                         <a href="#" class="no-link">
@@ -2360,6 +2360,7 @@
         </a>
     </div>
 </div>
+</div>
 
                 <div class="menu-category-header" id="signature">
                     <h2>Signature</h2>
@@ -2587,7 +2588,7 @@
                 </div>
 
                 <!-- Chart Section -->
-                 <div class="content">
+                <div class="content">
                     <div id="chart-container">
                         <h2>Order Request</h2>
                         <ul id="chart-list"></ul>
@@ -2601,12 +2602,160 @@
                  </div>
 
                  <!-- Spacer untuk memberikan jarak antara chart dan footer -->
-            <div style="height: 70px;"></div>
+            <!-- <div style="height: 70px;"></div> -->
 
-            <main>
+            <main class="content">
+                <section id="promos">
+                    <h2>Promo Terkini</h2>
+                    
+                    <div class="promo-tabs">
+                        <button class="tab-button active" data-tab="bank">Promo Bank</button>
+                        <button class="tab-button" data-tab="grab">Promo Grab</button>
+                        <button class="tab-button" data-tab="champ">Promo Champ</button>
+                    </div>
+
+                    <div id="bank" class="tab-content active">
+                        <div class="promo-card expandable">
+                            <h3>CIMB Niaga <span class="expand-icon">+</span></h3>
+                            <div class="promo-details">
+                                <p><strong>Diskon:</strong> 20%</p>
+                                <p><strong>Minimal Pembelanjaan:</strong> Rp400.000</p>
+                                <p><strong>Maksimal Diskon:</strong> Rp150.000</p>
+                                <p><strong>Berlaku:</strong> Setiap Sabtu dan Minggu</p>
+                            </div>
+                        </div>
+
+                        <div class="promo-card expandable">
+                            <h3>Bank BCA <span class="expand-icon">+</span></h3>
+                            <div class="promo-details">
+                                <p><strong>Diskon:</strong> 20%</p>
+                                <p><strong>Minimal Pembelanjaan:</strong> Rp350.000</p>
+                                <p><strong>Maksimal Diskon:</strong> Rp75.000</p>
+                                <p><strong>Berlaku:</strong> Senin hingga Kamis</p>
+                                <p><strong>Kartu:</strong> Semua kartu kredit BCA</p>
+                            </div>
+                        </div>
+
+                        <div class="promo-card expandable">
+                            <h3>Maybank <span class="expand-icon">+</span></h3>
+                            <div class="promo-details">
+                                <h4>Promo 1: Kartu Contactless & Visa</h4>
+                                <ul>
+                                    <li>Diskon 50%</li>
+                                    <li>Min. transaksi Rp500.000</li>
+                                    <li>Maks. diskon Rp300.000</li>
+                                </ul>
+                                
+                                <h4>Promo 2: Kartu Mastercard DCB</h4>
+                                <ul>
+                                    <li>Diskon 15%</li>
+                                    <li>Min. transaksi Rp500.000</li>
+                                    <li>Maks. diskon Rp150.000</li>
+                                </ul>
+                                
+                                <p><strong>Berlaku:</strong> Setiap hari</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="grab" class="tab-content">
+                        <div class="promo-card expandable">
+                            <h3>Grab Voucher <span class="expand-icon">+</span></h3>
+                            <div class="promo-details">
+                                <p><strong>Diskon:</strong> Rp100.000 atau Rp200.000</p>
+                                <p><strong>Berlaku:</strong> Senin hingga Jumat</p>
+                            </div>
+                        </div>
+
+                        <div class="promo-card expandable">
+                            <h3>Grab Combo <span class="expand-icon">+</span></h3>
+                            <div class="promo-details">
+                                <p><strong>Promo:</strong> Diskon untuk Coklat atau Pistachio</p>
+                                <p><strong>Berlaku:</strong> Setiap Sabtu dan Minggu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="champ" class="tab-content">
+                        <div class="promo-card expandable">
+                            <h3>Voucher Champ <span class="expand-icon">+</span></h3>
+                            <div class="promo-details">
+                                <p><strong>Diskon:</strong> Rp100.000</p>
+                                <p><strong>Berlaku:</strong> Setiap hari</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <style>
+            .promo-tabs {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 20px;
+            }
+
+            .tab-button {
+                padding: 10px 20px;
+                background-color: #f0f0f0;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .tab-button.active {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .tab-content {
+                display: none;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+
+            .promo-card {
+                background-color: #ffffff;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 15px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .promo-card h3 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0;
+            }
+
+            .expand-icon {
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+
+            .promo-details {
+                display: none;
+                margin-top: 10px;
+            }
+
+            .promo-card.expanded .promo-details {
+                display: block;
+            }
+
+            .promo-card:hover {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            </style>
+
+<!--             <main>
                 <div id="reader"></div>
                 <div id="result"></div>
-            </main>
+            </main> -->
 
                 <audio id="ting-sound" src="ting.mp3" preload="auto"></audio>
 
@@ -2635,10 +2784,10 @@
         <span>Promo</span>
     </a>
     <!-- QR Menu Added Here -->
-    <a href="qrcode.html" class="qr-reader" id="open-qr-scanner">
+    <a href="https://gate1.champ-group.com/pos-service/" class="qr-reader" id="open-qr-scanner">
         <i></i>
-        <span>QR Reader</span>
-    </a>    
+        <span>POS Service</span>
+    </a>      
     <!-- End of QR Menu -->
     <a href="#" id="activity-link" class="aktivitas">
         <i></i>
